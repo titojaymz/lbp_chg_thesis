@@ -7,12 +7,13 @@
 ?>
 <div class="content-page">
     <ul class="breadcrumb">
-        <li><a href="<?php echo base_url('dashboard/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li>Status</li>
+        <li><a href="<?php echo base_url('landregistration/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li>Land Registration</li>
+        <li>Land Registration List</li>
     </ul>
     <div class="content">
         <div class="page-heading">
-            <h1><i class='icon-flow-tree'></i>User list</h1>
+            <h1><i class='icon-flow-tree'></i>Land Registration List</h1>
         </div>
 
         <div class="row">
@@ -46,10 +47,10 @@
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>land_reg_id</th>
-                                    <th>date_recvd_dar</th>
-                                    <th>claim_fld_no</th>
-                                    <th>name_land_owner</th>
+                                    <th>System ID</th>
+                                    <th>Date Received from DAR</th>
+                                    <th>Claim folder number</th>
+                                    <th>Name of land owner</th>
                                 </tr>
                                 </thead>
 

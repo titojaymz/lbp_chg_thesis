@@ -24,15 +24,10 @@
 				</li>
 				<li class='has_sub'>
 					<a href='javascript:void(0);'>
-						<i class='icon-pencil-3'></i><span>Request Forms</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
+						<i class='icon-pencil-3'></i><span>Forms</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
 					</a>
 					<ul>
-						<li><a href="<?php echo base_url('transport') ?>"><span>Transportation</span></a></li>
-						<li><a href="<?php echo base_url('procurement') ?>"><span>Procurement</span></a></li>
-						<li><a href="<?php echo base_url('hr') ?>"><span>Human Resource</span></a></li>
-						<li><a href="<?php echo base_url('bld_ofc_prop') ?>"><span>Building/Office/Property</span></a></li>
-						<li><a href="<?php echo base_url('records') ?>"><span>Records</span></a></li>
-						<li><a href="<?php echo base_url('other_logistics') ?>"><span>Other Logistic Request</span></a></li>
+						<li><a href="<?php echo base_url('landregistration') ?>"><span>Land Registration</span></a></li>
 					</ul>
 				</li>
 <!--				--><?php //if($access == -1){ ?>
@@ -42,11 +37,6 @@
 						</a>
 						<ul>
 							<li><a href="#"><span>Status</span></a></li>
-							<li><a href="#"><span>Maintenance</span></a></li>
-							<li><a href="#"><span>Facility</span></a></li>
-							<li><a href="#"><span>Conference Room</span></a></li>
-							<li><a href="#"><span>Vehicle</span></a></li>
-							<li><a href="#"><span>Drivers</span></a></li>
 						</ul>
 					</li>
 
