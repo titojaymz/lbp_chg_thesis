@@ -6,11 +6,6 @@
  */
 class user extends CI_Controller
 {
-    protected function superKey()
-    {
-        return $this->config->item('encryption_key');
-    }
-
     public function index()
     {
         $this->validateLogin();
