@@ -1,7 +1,3 @@
-
-<?php $access = $this->session->userdata('gset_access') ;
-
-$uid = $this->session->userdata('gset_userID');?>
 <!-- Top Bar End -->
 <!-- Left Sidebar Start -->
 <div class="left side-menu">

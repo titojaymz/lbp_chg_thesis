@@ -25,7 +25,7 @@
 		<div class="topbar-left">
 			<div class="logo">
 <!--				<a href="" class="rounded-image profile-image"><img src="--><?php //echo base_url('/images/dswd.jpg');?><!--"></a>-->
-				<h1><a href="#"><img src="<?php echo base_url('/images/logo.png');?>" alt="Logo"></a>ASSETS</h1>
+				<h1><a href="#"><img src="<?php echo base_url('/images/logo.png');?>" alt="Logo"></a>LBP</h1>
 			</div>
 			<button class="button-menu-mobile open-left">
 				<i class="fa fa-bars"></i>
