@@ -38,4 +38,83 @@ class landregistration extends CI_Controller
         $this->load->view('landregistrationlist',$data);
         $this->load->view('footer');
     }
+
+    public function landregistrationadd()
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $landRegList = new Landregistration_model();
+
+        $this->validatelandregistrationadd();
+
+        if (!$this->form_validation->run())
+        {
+            $data = array(
+                'system_message' => '',
+                'access_level' => $this->accessLevel(),
+                'landRegList' => $landRegList->getAllLandRegistration()
+            );
+
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('sidebar');
+            $this->load->view('landregistrationadd',$data);
+            $this->load->view('footer');
+        }
+    }
+
+    protected function validatelandregistrationadd()
+    {
+        $config = array(
+            array(
+                'field'   => 'purpose_trip',
+                'label'   => 'Purpose of trip',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'place_travel',
+                'label'   => 'Place of travel',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'date_needed_from',
+                'label'   => 'Date needed from',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'date_needed_to',
+                'label'   => 'Date needed to',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'time_needed_from',
+                'label'   => 'Time needed from',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'time_needed_to',
+                'label'   => 'Time needed to',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'trf_date_departure',
+                'label'   => 'Date of travel departure',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'trf_date_return',
+                'label'   => 'Date of travel return',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'trf_purpose_travel',
+                'label'   => 'Purpose of travel',
+                'rules'   => 'required'
+            )
+        );
+
+        return $this->form_validation->set_rules($config);
+    }
 }
