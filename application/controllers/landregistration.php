@@ -54,7 +54,9 @@ class landregistration extends CI_Controller
             $data = array(
                 'system_message' => '',
                 'access_level' => $this->accessLevel(),
-                'landRegList' => $landRegList->getAllLandRegistration()
+                'landRegList' => $landRegList->getAllLandRegistration(),
+                'prov_data' => $landRegList->getProvinces(),
+                'lib_status' => $landRegList->getStatus()
             );
 
             $this->load->view('header');
@@ -117,4 +119,22 @@ class landregistration extends CI_Controller
 
         return $this->form_validation->set_rules($config);
     }
+
+    public function ajaxCitiesOpt()
+    {
+        $prov_id = $_REQUEST['prov_id'];
+        $landRegList = new Landregistration_model();
+        $data['cities_list'] = $landRegList->getCities($prov_id);
+        $this->load->view('ajax_cities_opt',$data);
+    }
+
+    public function ajaxBrgyOpt()
+    {
+        $prov_id = $_REQUEST['muni_city_id'];
+        $landRegList = new Landregistration_model();
+        $data['cities_list'] = $landRegList->getBrgy($prov_id);
+        $this->load->view('ajax_brgy_opt',$data);
+    }
+
+
 }

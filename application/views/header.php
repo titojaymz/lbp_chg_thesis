@@ -26,7 +26,7 @@
 	<link href="<?php echo base_url('assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet'); ?>" />
 	<link href="<?php echo base_url('assets/libs/pace/pace.css" rel="stylesheet'); ?>" />
 	<link href="<?php echo base_url('assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet'); ?>" />
-<!--	<link href="--><?php //echo base_url('assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet'); ?><!--" />-->
+	<link href="<?php echo base_url('assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet'); ?>" />
 <!--	<link href="--><?php //echo base_url('assets/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet'); ?><!--" />-->
 <!--	<link href="--><?php //echo base_url('assets/libs/jquery-icheck/skins/all.css" rel="stylesheet'); ?><!--" />-->
 	<!-- Code Highlighter for Demo -->

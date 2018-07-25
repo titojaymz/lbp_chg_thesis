@@ -153,7 +153,7 @@ if($access == 0){
 <script src="<?php echo base_url('assets/libs/bootstrap-select2/select2.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/libs/magnific-popup/jquery.magnific-popup.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/libs/pace/pace.min.js'); ?>"></script>
-<!--<script src="--><?php //echo base_url('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js'); ?><!--"></script>-->
+<script src="<?php echo base_url('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js'); ?>"></script>
 <!--<script src="--><?php //echo base_url('assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js'); ?><!--"></script>-->
 <!--<script src="--><?php //echo base_url('assets/libs/jquery-icheck/icheck.min.js'); ?><!--"></script>-->
 

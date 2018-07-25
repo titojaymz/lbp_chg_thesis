@@ -89,52 +89,143 @@
                     <div class="form-group"> <!-- Area approved -->
                         <label for="input-text" class="col-sm-2 control-label">Area approved</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" class="form-control"  placeholder="Area approved" name="x_area_aprvd" id="x_area_aprvd" maxlength="11" value="<?php echo set_value('x_area_aprvd'); ?>">
+                            <input type="number" min="1" max="99999999999" class="form-control"  placeholder="Area approved" name="x_area_aprvd" id="x_area_aprvd" maxlength="11" value="<?php echo set_value('x_area_aprvd'); ?>" required>
                         </div>
                     </div> <!-- ./Area approved -->
                     <div class="form-group"> <!-- Easement -->
                         <label for="input-text" class="col-sm-2 control-label">Easement</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" class="form-control"  placeholder="Easement" name="x_easement" id="x_easement" maxlength="11" value="<?php echo set_value('x_easement'); ?>">
+                            <input type="number" min="1" max="99999999999" class="form-control"  placeholder="Easement" name="x_easement" id="x_easement" maxlength="11" value="<?php echo set_value('x_easement'); ?>" required>
                         </div>
                     </div> <!-- ./Easement -->
                     <div class="form-group"> <!-- Lot number -->
                         <label for="input-text" class="col-sm-2 control-label">Lot number</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Lot number" name="x_lot_no" id="x_lot_no" maxlength="50" value="<?php echo set_value('x_lot_no'); ?>">
+                            <input type="text" class="form-control"  placeholder="Lot number" name="x_lot_no" id="x_lot_no" maxlength="50" value="<?php echo set_value('x_lot_no'); ?>" required>
                         </div>
                     </div> <!-- ./Lot number -->
                     <div class="form-group"> <!-- Land use -->
                         <label for="input-text" class="col-sm-2 control-label">Land use</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Land use" name="x_land_use" id="x_land_use" maxlength="50" value="<?php echo set_value('x_land_use'); ?>">
+                            <input type="text" class="form-control"  placeholder="Land use" name="x_land_use" id="x_land_use" maxlength="50" value="<?php echo set_value('x_land_use'); ?>" required>
                         </div>
                     </div> <!-- ./Land use -->
                     <div class="form-group"> <!-- Province -->
                         <label for="input-text" class="col-sm-2 control-label">Province</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="x_prov_id" id="x_prov_id">
-                                <option value="0">Please select</option>
+                            <select class="form-control" name="x_prov_id" id="x_prov_id" onchange="getCities()" required>
+                                <option value="">Please select</option>
+                                <?php foreach($prov_data as $provList): ?>
+                                    <option value="<?php echo $provList->prov_id ?>"><?php echo $provList->prov_name ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                     </div> <!-- ./Province -->
                     <div class="form-group"> <!-- Municipality/City -->
                         <label for="input-text" class="col-sm-2 control-label">Municipality/City</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="x_muni_city_id" id="x_muni_city_id">
-                                <option value="0">Please select</option>
+                        <div class="col-sm-10" id="city_div">
+                            <select class="form-control" name="x_muni_city_id" id="x_muni_city_id" required>
+                                <option value="">Please select</option>
                             </select>
                         </div>
                     </div> <!-- ./Municipality/City -->
                     <div class="form-group"> <!-- Barangay -->
                         <label for="input-text" class="col-sm-2 control-label">Barangay</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="x_brgy_id" id="x_brgy_id">
-                                <option value="0">Please select</option>
+                        <div class="col-sm-10" id="brgy_div">
+                            <select class="form-control" name="x_brgy_id" id="x_brgy_id" required>
+                                <option value="">Please select</option>
                             </select>
                         </div>
                     </div> <!-- ./Barangay -->
+                    <div class="form-group"> <!-- Total land value (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Total land value (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Total land value (Land valuation)" name="x_land_val_total_land_value" id="x_land_val_total_land_value" maxlength="50" value="<?php echo set_value('x_land_val_total_land_value'); ?>" required>
+                        </div>
+                    </div> <!-- ./Total land value (Land valuation) -->
+                    <div class="form-group"> <!-- Cash (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Cash (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Cash (Land valuation)" name="x_land_val_cash" id="x_land_val_cash" maxlength="50" value="<?php echo set_value('x_land_val_cash'); ?>" required>
+                        </div>
+                    </div> <!-- ./Cash (Land valuation) -->
+                    <div class="form-group"> <!-- Bond (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Bond (Land valuation)" name="x_land_val_bond" id="x_land_val_bond" maxlength="50" value="<?php echo set_value('x_land_val_bond'); ?>" required>
+                        </div>
+                    </div> <!-- ./Bond (Land valuation) -->
+                    <div class="form-group"> <!-- Bond (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Bond (Land valuation)" name="x_land_val_bond" id="x_land_val_bond" maxlength="50" value="<?php echo set_value('x_land_val_bond'); ?>" required>
+                        </div>
+                    </div> <!-- ./Bond (Land valuation) -->
+                    <div class="form-group"> <!-- Status -->
+                        <label for="input-text" class="col-sm-2 control-label">Status</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="x_status_id" id="x_status_id" required>
+                                <option value="">Please select</option>
+                                <?php foreach($lib_status as $statusList): ?>
+                                    <option value="<?php echo $statusList->status_id ?>"><?php echo $statusList->status_name ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div> <!-- ./Status -->
+                    <div class="form-group"> <!-- Pending division -->
+                        <label for="input-text" class="col-sm-2 control-label">Pending division</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Pending division" name="x_pending_division" id="x_pending_division" maxlength="50" value="<?php echo set_value('x_pending_division'); ?>" required>
+                        </div>
+                    </div> <!-- ./Pending division -->
+                    <div class="form-group"> <!-- Date of MOV/CVPF -->
+                        <label class="col-sm-2 control-label">Date of MOV/CVPF</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_mov_cvpf" id="x_date_mov_cvpf" value="<?php echo set_value('x_date_mov_cvpf'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of MOV/CVPF -->
+                    <div class="form-group"> <!-- Date of COD -->
+                        <label class="col-sm-2 control-label">Date of COD</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_cod" id="x_date_cod" value="<?php echo set_value('x_date_cod'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of COD -->
+                    <div class="form-group"> <!-- Date of last ammended -->
+                        <label class="col-sm-2 control-label">Date of last ammended</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_last_ammended" id="x_date_last_ammended" value="<?php echo set_value('x_date_last_ammended'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of last ammended -->
                     <button class="btn btn-sm btn-success" type="submit">Save</button>
                 </form>
             </div> <!-- ./widget-header transparent -->
         </div> <!-- ./widget -->
+
+        <script>
+            function getCities() {
+                var xhttp = new XMLHttpRequest();
+                var prov_id = document.getElementById('x_prov_id').value;
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("city_div").innerHTML =
+                            this.responseText;
+                        document.getElementById("x_brgy_id").value = "";
+                    }
+                };
+                xhttp.open("GET", "<?php echo base_url('landregistration/ajaxCitiesOpt/?prov_id=') ?>" + prov_id, true);
+                xhttp.send();
+            }
+
+            function getBrgy() {
+                var xhttp = new XMLHttpRequest();
+                var muni_city_id = document.getElementById('x_muni_city_id').value;
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("brgy_div").innerHTML =
+                            this.responseText;
+                    }
+                };
+                xhttp.open("GET", "<?php echo base_url('landregistration/ajaxBrgyOpt/?muni_city_id=') ?>" + muni_city_id, true);
+                xhttp.send();
+            }
+        </script>

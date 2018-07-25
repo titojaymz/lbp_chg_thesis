@@ -82,4 +82,28 @@ class Landregistration_model extends CI_Model
         }
         return $queryReult;
     }
+
+    public function getProvinces($id = 5) // provinces were filtered by default to region 5
+    {
+        $query = $this->db->get_where('lib_provinces',array('region_id' => $id));
+        return $query->result();
+    }
+
+    public function getCities($id) // provinces were filtered by default to region 5
+    {
+        $query = $this->db->get_where('lib_cities',array('prov_id' => $id));
+        return $query->result();
+    }
+
+    public function getBrgy($id) // provinces were filtered by default to region 5
+    {
+        $query = $this->db->get_where('lib_barangay',array('muni_city_id' => $id));
+        return $query->result();
+    }
+
+    public function getStatus()
+    {
+        $query = $this->db->get('lib_status');
+        return $query->result();
+    }
 }
