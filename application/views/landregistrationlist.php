@@ -8,18 +8,17 @@
 <div class="content-page">
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url('landregistration/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li>Land Registration</li>
-        <li>Land Registration List</li>
+        <li><strong>Land registration list</strong></li>
     </ul>
     <div class="content">
         <div class="page-heading">
-            <h1><i class='icon-flow-tree'></i>Land Registration List</h1>
+            <h1><i class='icon-address-book-alt'></i>Land Registration</h1>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('user/adduser') ?>" class="btn btn-sm btn-success"><i class="icon-user-add"></i> Add user</a>
+                    <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
                 </div>
             </div>
         </div>
@@ -32,7 +31,7 @@
                 --><?php /*} */?>
                 <div class="widget">
                     <div class="widget-header transparent">
-                        <h2><strong>User list</strong></h2>
+                        <h2><strong>Land registration list</strong></h2>
                         <div class="additional-btn">
                             <?php /*
                             <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
@@ -79,7 +78,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('user/adduser') ?>" class="btn btn-sm btn-success"><i class="icon-user-add"></i> Add user</a>
+                    <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
                 </div>
             </div>
         </div>
