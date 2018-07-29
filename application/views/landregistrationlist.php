@@ -15,6 +15,20 @@
             <h1><i class='icon-address-book-alt'></i>Land Registration</h1>
         </div>
 
+        <?php if (validation_errors() <> ''){ ?>
+            <div class="alert alert-danger">
+                <?php if ($system_message <> ''){ ?>
+                    <strong><?php echo $system_message ?></strong>
+                <?php } ?>
+                <?php echo validation_errors(); ?>
+            </div>
+        <?php } ?>
+        <?php if(ENVIRONMENT == 'development') { ?>
+            <pre>
+                <?php print_r($access_level) ?>
+            </pre>
+        <?php } ?>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
