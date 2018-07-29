@@ -19,7 +19,7 @@
 		<div id="sidebar-menu">
 			<ul>
 				<li>
-						<a href="<?php echo base_url('public_access/index');?>"><i class='icon-home-3'></i><span>Dashboard</span></a>
+						<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
 
 				</li>
 				<li class='has_sub'>
@@ -46,7 +46,7 @@
 						<i class='icon-music-1'></i><span>Reports</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
 					</a>
 					<ul>
-						<li><a href="#"><span>Accomplished Request</span></a></li>
+						<li><a href="#"><span>Consolidated Reports</span></a></li>
 					</ul>
 				</li>
 				<li class='has_sub'>
@@ -60,11 +60,6 @@
 				<li>
 
 					<a href="#"><i class='glyphicon glyphicon-refresh'></i><span > Change Password</span><span class="pull-right"></span></a>
-				</li>
-
-				<li>
-
-					<a href="#"><i class='fa fa-magic'></i><span >Download User Manual</span><span class="pull-right"></span></a>
 				</li>
 				<li>
 					<a href='javascript:void(0);' class="md-trigger" data-modal="logout-modal"><i class="fa fa-power-off text-red-1"></i><span > Logout</span><span class="pull-right"></span></a>

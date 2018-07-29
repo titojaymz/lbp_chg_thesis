@@ -31,6 +31,8 @@
                 <?php print_r($access_level) ?>
             </pre>
         <?php } ?>
+
+
         <div class="widget">
             <div class="widget-header transparent">
                 <h2><strong>New</strong> record</h2>

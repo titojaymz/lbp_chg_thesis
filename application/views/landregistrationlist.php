@@ -15,14 +15,19 @@
             <h1><i class='icon-address-book-alt'></i>Land Registration</h1>
         </div>
 
-        <?php if($system_message <> ''): ?>
-            <div class="col-md-12">
-                <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                    <?php echo $system_message ?>
-                </div>
+        <?php if (validation_errors() <> ''){ ?>
+            <div class="alert alert-danger">
+                <?php if ($system_message <> ''){ ?>
+                    <strong><?php echo $system_message ?></strong>
+                <?php } ?>
+                <?php echo validation_errors(); ?>
             </div>
-        <?php endif ?>
+        <?php } ?>
+        <?php if(ENVIRONMENT == 'development') { ?>
+            <pre>
+                <?php print_r($access_level) ?>
+            </pre>
+        <?php } ?>
 
         <div class="row">
             <div class="col-md-12">
