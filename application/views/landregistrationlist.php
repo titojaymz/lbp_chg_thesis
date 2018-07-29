@@ -15,6 +15,15 @@
             <h1><i class='icon-address-book-alt'></i>Land Registration</h1>
         </div>
 
+        <?php if($system_message <> ''): ?>
+            <div class="col-md-12">
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                    <?php echo $system_message ?>
+                </div>
+            </div>
+        <?php endif ?>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">

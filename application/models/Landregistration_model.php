@@ -16,7 +16,7 @@ class Landregistration_model extends CI_Model
                     $area_per_title,$area_acqrd,$title_no,$area_aprvd,$easementt,$lot_no,
                     $land_use,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
                     $land_val_cash,$land_val_bond,$status,$pending_division,$date_mov_cvpf,
-                    $date_cod,$date_last_ammended,$date_cod2,$date_returned,$bond_serial_no,
+                    $date_cod,$date_last_ammended,$date_returned,$bond_serial_no,
                     $status2,$less_rel_total,$less_rel_cash,$less_rel_bond,$less_rel_bond_ao2,
                     $end_bal_total,$end_bal_cash,$end_bal_bond,$created_by)
     {
@@ -27,8 +27,8 @@ class Landregistration_model extends CI_Model
                       no_fbs, area_per_title, area_acqrd, title_no,
                       area_aprvd, easementt, lot_no, land_use, prov_id,
                       muni_city_id, brgy_id, land_val_total_land_value,
-                      land_val_cash, land_val_bond, status, pending_division,
-                      date_mov_cvpf, date_cod, date_last_ammended, date_cod2,
+                      land_val_cash, land_val_bond, status_id, pending_division,
+                      date_mov_cvpf, date_cod, date_last_ammended,
                       date_returned, bond_serial_no, status2, less_rel_total,
                       less_rel_cash, less_rel_bond, less_rel_bond_ao2, end_bal_total,
                       end_bal_cash, end_bal_bond, created_by, date_created)
@@ -56,7 +56,6 @@ class Landregistration_model extends CI_Model
                 "'.$date_mov_cvpf.'",
                 "'.$date_cod.'",
                 "'.$date_last_ammended.'",
-                "'.$date_cod2.'",
                 "'.$date_returned.'",
                 "'.$bond_serial_no.'",
                 "'.$status2.'",
