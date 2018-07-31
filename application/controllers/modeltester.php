@@ -15,7 +15,7 @@ class modeltester extends CI_Controller
             1,2,3,123,123,123,'status1','itasd','2018-01-01','2018-01-01','2018-01-01','2018-01-01','2018-01-01',
             'SERIAL_NO','STATUS 2 na pwede inputan',123,123,123,123,123,123,123,99);*/
 
-        $method_tester = $modeltester->getBrgy(496);
+        $method_tester = $modeltester->getDetailsById(12);
 
         $data = array(
             'modeltester' => $method_tester

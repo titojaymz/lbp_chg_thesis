@@ -140,11 +140,6 @@ class landregistration extends CI_Controller
         }
     }
 
-    public function createLandregistration()
-    {
-
-    }
-
     protected function validatelandregistrationadd()
     {
         $config = array(
@@ -327,6 +322,36 @@ class landregistration extends CI_Controller
         $landRegList = new Landregistration_model();
         $data['cities_list'] = $landRegList->getBrgy($prov_id);
         $this->load->view('ajax_brgy_opt',$data);
+    }
+
+    public function landregistrationedit($id)
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $user_id = $this->session->userdata('user_id');
+
+        $landRegList = new Landregistration_model();
+
+        $this->validatelandregistrationadd();
+
+        if (!$this->form_validation->run())
+        {
+            $data = array(
+                'system_message' => '',
+                'access_level' => $this->accessLevel(),
+                'landRegList' => $landRegList->getAllLandRegistration(),
+                'prov_data' => $landRegList->getProvinces(),
+                'lib_status' => $landRegList->getStatus()
+            );
+
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('sidebar');
+            $this->load->view('landregistrationedit',$data);
+            $this->load->view('footer');
+        }
     }
 
 

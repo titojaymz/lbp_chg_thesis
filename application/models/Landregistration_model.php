@@ -105,4 +105,10 @@ class Landregistration_model extends CI_Model
         $query = $this->db->get('lib_status');
         return $query->result();
     }
+
+    public function getDetailsById($id)
+    {
+        $query = $this->db->get_where('tbl_land_reg', array('land_reg_id' => $id));
+        return $query->result();
+    }
 }
