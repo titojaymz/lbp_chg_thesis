@@ -15,12 +15,9 @@
             <h1><i class='icon-address-book-alt'></i>Land Registration</h1>
         </div>
 
-        <?php if (validation_errors() <> ''){ ?>
-            <div class="alert alert-danger">
-                <?php if ($system_message <> ''){ ?>
-                    <strong><?php echo $system_message ?></strong>
-                <?php } ?>
-                <?php echo validation_errors(); ?>
+        <?php if ($system_message <> ''){ ?>
+            <div class="alert alert-info">
+                <strong><?php echo $system_message ?></strong>
             </div>
         <?php } ?>
         <?php if(ENVIRONMENT == 'development') { ?>
@@ -72,7 +69,7 @@
                                     <tr>
                                         <td>
                                             <div class="btn btn-group">
-                                                <a href="#" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="<?php echo base_url('landregistration/landregistrationedit/' .$row->land_reg_id ) ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-edit"></i></a>
                                                 <a href="#" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
