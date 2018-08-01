@@ -18,36 +18,34 @@ class landregistration extends CI_Controller
         }
     }
 
-    public function index()
+    public function index($operation = NULL)
     {
         if (!$this->session->userdata('user_data')){
             redirect('user','location');
         }
 
-        $operation = $_REQUEST['operation'];
-        if($operation <> '')
+        if($operation == NULL)
         {
-            $operation = $_REQUEST['operation'];
+            $message = '';
         }
         else
-        {
-            $operation = NULL;
-        }
-
-        if($operation <> NULL)
         {
             if($operation == 'landaddsuccess')
             {
                 $message = 'Add success';
             }
+            else if($operation == 'norecord')
+            {
+                $message = 'No record found';
+            }
+            else if($operation == 'landupdatesuccess')
+            {
+                $message = 'Update success';
+            }
             else
             {
                 $message = '';
             }
-        }
-        else
-        {
-            $message = '';
         }
 
         $landRegList = new Landregistration_model();
@@ -135,7 +133,7 @@ class landregistration extends CI_Controller
                                                 $x_end_bal_cash,$x_end_bal_bond,$user_id);
             if($insertResult == 1)
             {
-                redirect('landregistration/index/?operation=landaddsuccess','location');
+                redirect('landregistration/index/landaddsuccess','location');
             }
         }
     }
@@ -166,7 +164,7 @@ class landregistration extends CI_Controller
             array(
                 'field'   => 'x_area_per_title',
                 'label'   => 'Area per title',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_area_acqrd',
@@ -186,7 +184,7 @@ class landregistration extends CI_Controller
             array(
                 'field'   => 'x_easement',
                 'label'   => 'Easement',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_lot_no',
@@ -216,17 +214,17 @@ class landregistration extends CI_Controller
             array(
                 'field'   => 'x_land_val_total_land_value',
                 'label'   => 'Total land value (Land valuation)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_land_val_cash',
                 'label'   => 'Cash (Land valuation)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_land_val_bond',
                 'label'   => 'Bond (Land valuation)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_status_id',
@@ -271,37 +269,37 @@ class landregistration extends CI_Controller
             array(
                 'field'   => 'x_less_rel_total',
                 'label'   => 'Total (Less: Releases)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_less_rel_cash',
                 'label'   => 'Cash (Less: Releases)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_less_rel_bond',
                 'label'   => 'Bond (Less: Releases)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_less_rel_bond_ao2',
                 'label'   => 'Bond AO2 (Less: Releases)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_end_bal_total',
                 'label'   => 'Total (Ending balances)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_end_bal_cash',
                 'label'   => 'Cash (Ending balances)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             ),
             array(
                 'field'   => 'x_end_bal_bond',
                 'label'   => 'Bond (Ending balances)',
-                'rules'   => 'required|decimal'
+                'rules'   => 'required|numeric'
             )
         );
 
@@ -324,15 +322,38 @@ class landregistration extends CI_Controller
         $this->load->view('ajax_brgy_opt',$data);
     }
 
-    public function landregistrationedit($id)
+    public function ajaxbodyCitiesOpt()
+    {
+        $landRegList = new Landregistration_model();
+        $data['cities_list'] = $landRegList->getCities($_REQUEST['prov_id']);
+        $data['ajax_muni_city_id'] = $_REQUEST['muni_city_id'];
+        $this->load->view('ajax_body_cities_opt',$data);
+    }
+
+    public function ajaxbodyBrgyOpt()
+    {
+        $landRegList = new Landregistration_model();
+        $data['cities_list'] = $landRegList->getBrgy($_REQUEST['muni_city_id']);
+        $data['ajax_brgy_id'] = $_REQUEST['brgy_id'];
+        $this->load->view('ajax_body_brgy_opt',$data);
+    }
+
+    public function landregistrationedit($id = NULL)
     {
         if (!$this->session->userdata('user_data')){
             redirect('user','location');
         }
 
+        if($id == NULL)
+        {
+            redirect('landregistration/index/norecord','location');
+        }
+
         $user_id = $this->session->userdata('user_id');
 
         $landRegList = new Landregistration_model();
+
+        $landData = $landRegList->getDetailsById($id);
 
         $this->validatelandregistrationadd();
 
@@ -343,7 +364,8 @@ class landregistration extends CI_Controller
                 'access_level' => $this->accessLevel(),
                 'landRegList' => $landRegList->getAllLandRegistration(),
                 'prov_data' => $landRegList->getProvinces(),
-                'lib_status' => $landRegList->getStatus()
+                'lib_status' => $landRegList->getStatus(),
+                'landregistrationdata' => $landData
             );
 
             $this->load->view('header');
@@ -351,6 +373,374 @@ class landregistration extends CI_Controller
             $this->load->view('sidebar');
             $this->load->view('landregistrationedit',$data);
             $this->load->view('footer');
+        }
+        else
+        {
+            if($landData['date_recvd_dar'] == $this->input->post('x_date_recvd_dar'))
+            {
+                $x_date_recvd_dar = $landData['date_recvd_dar'];
+            }
+            else
+            {
+                $x_date_recvd_dar = $this->input->post('x_date_recvd_dar');
+            }
+
+            if($landData['claim_fld_no'] == $this->input->post('x_claim_fld_no'))
+            {
+                $x_claim_fld_no = $landData['claim_fld_no'];
+            }
+            else
+            {
+                $x_claim_fld_no = $this->input->post('x_claim_fld_no');
+            }
+
+            if($landData['name_land_owner'] == $this->input->post('x_name_land_owner'))
+            {
+                $x_name_land_owner = $landData['name_land_owner'];
+            }
+            else
+            {
+                $x_name_land_owner = $this->input->post('x_name_land_owner');
+            }
+
+            if($landData['no_fbs'] == $this->input->post('x_no_fbs'))
+            {
+                $x_no_fbs = $landData['no_fbs'];
+            }
+            else
+            {
+                $x_no_fbs = $this->input->post('x_no_fbs');
+            }
+
+            if($landData['area_per_title'] == $this->input->post('x_area_per_title'))
+            {
+                $x_area_per_title = $landData['area_per_title'];
+            }
+            else
+            {
+                $x_area_per_title = $this->input->post('x_area_per_title');
+            }
+
+            if($landData['area_acqrd'] == $this->input->post('x_area_acqrd'))
+            {
+                $x_area_acqrd = $landData['area_acqrd'];
+            }
+            else
+            {
+                $x_area_acqrd = $this->input->post('x_area_acqrd');
+            }
+
+            if($landData['title_no'] == $this->input->post('x_title_no'))
+            {
+                $x_title_no = $landData['title_no'];
+            }
+            else
+            {
+                $x_title_no = $this->input->post('x_title_no');
+            }
+
+            if($landData['area_aprvd'] == $this->input->post('x_area_aprvd'))
+            {
+                $x_area_aprvd = $landData['area_aprvd'];
+            }
+            else
+            {
+                $x_area_aprvd = $this->input->post('x_area_aprvd');
+            }
+
+            if($landData['easementt'] == $this->input->post('x_easement'))
+            {
+                $x_easement = $landData['easementt'];
+            }
+            else
+            {
+                $x_easement = $this->input->post('x_easement');
+            }
+
+            if($landData['lot_no'] == $this->input->post('x_lot_no'))
+            {
+                $x_lot_no = $landData['lot_no'];
+            }
+            else
+            {
+                $x_lot_no = $this->input->post('x_lot_no');
+            }
+
+            if($landData['land_use'] == $this->input->post('x_land_use'))
+            {
+                $x_land_use = $landData['land_use'];
+            }
+            else
+            {
+                $x_land_use = $this->input->post('x_land_use');
+            }
+
+            if($landData['prov_id'] == $this->input->post('x_prov_id'))
+            {
+                $x_prov_id = $landData['prov_id'];
+            }
+            else
+            {
+                $x_prov_id = $this->input->post('x_prov_id');
+            }
+
+            if($landData['muni_city_id'] == $this->input->post('x_muni_city_id'))
+            {
+                $x_muni_city_id = $landData['muni_city_id'];
+            }
+            else
+            {
+                $x_muni_city_id = $this->input->post('x_muni_city_id');
+            }
+
+            if($landData['brgy_id'] == $this->input->post('x_brgy_id'))
+            {
+                $x_brgy_id = $landData['brgy_id'];
+            }
+            else
+            {
+                $x_brgy_id = $this->input->post('x_brgy_id');
+            }
+
+            if($landData['land_val_total_land_value'] == $this->input->post('x_land_val_total_land_value'))
+            {
+                $x_land_val_total_land_value = $landData['land_val_total_land_value'];
+            }
+            else
+            {
+                $x_land_val_total_land_value = $this->input->post('x_land_val_total_land_value');
+            }
+
+            if($landData['land_val_cash'] == $this->input->post('x_land_val_cash'))
+            {
+                $x_land_val_cash = $landData['land_val_cash'];
+            }
+            else
+            {
+                $x_land_val_cash = $this->input->post('x_land_val_cash');
+            }
+
+            if($landData['land_val_bond'] == $this->input->post('x_land_val_bond'))
+            {
+                $x_land_val_bond = $landData['land_val_bond'];
+            }
+            else
+            {
+                $x_land_val_bond = $this->input->post('x_land_val_bond');
+            }
+
+            if($landData['status_id'] == $this->input->post('x_status_id'))
+            {
+                $x_status_id = $landData['status_id'];
+            }
+            else
+            {
+                $x_status_id = $this->input->post('x_status_id');
+            }
+
+            if($landData['pending_division'] == $this->input->post('x_pending_division'))
+            {
+                $x_pending_division = $landData['pending_division'];
+            }
+            else
+            {
+                $x_pending_division = $this->input->post('x_pending_division');
+            }
+
+            if($landData['date_mov_cvpf'] == $this->input->post('x_date_mov_cvpf'))
+            {
+                $x_date_mov_cvpf = $landData['date_mov_cvpf'];
+            }
+            else
+            {
+                $x_date_mov_cvpf = $this->input->post('x_date_mov_cvpf');
+            }
+
+            if($landData['date_cod'] == $this->input->post('x_date_cod'))
+            {
+                $x_date_cod = $landData['date_cod'];
+            }
+            else
+            {
+                $x_date_cod = $this->input->post('x_date_cod');
+            }
+
+            if($landData['date_last_ammended'] == $this->input->post('x_date_last_ammended'))
+            {
+                $x_date_last_ammended = $landData['date_last_ammended'];
+            }
+            else
+            {
+                $x_date_last_ammended = $this->input->post('x_date_last_ammended');
+            }
+
+            if($landData['date_returned'] == $this->input->post('x_date_returned'))
+            {
+                $x_date_returned = $landData['date_returned'];
+            }
+            else
+            {
+                $x_date_returned = $this->input->post('x_date_returned');
+            }
+
+            if($landData['bond_serial_no'] == $this->input->post('x_bond_serial_no'))
+            {
+                $x_bond_serial_no = $landData['bond_serial_no'];
+            }
+            else
+            {
+                $x_bond_serial_no = $this->input->post('x_bond_serial_no');
+            }
+
+            if($landData['status2'] == $this->input->post('x_status_2'))
+            {
+                $x_status_2 = $landData['status2'];
+            }
+            else
+            {
+                $x_status_2 = $this->input->post('x_status_2');
+            }
+
+            if($landData['less_rel_total'] == $this->input->post('x_less_rel_total'))
+            {
+                $x_less_rel_total = $landData['less_rel_total'];
+            }
+            else
+            {
+                $x_less_rel_total = $this->input->post('x_less_rel_total');
+            }
+
+            if($landData['less_rel_cash'] == $this->input->post('x_less_rel_cash'))
+            {
+                $x_less_rel_cash = $landData['less_rel_cash'];
+            }
+            else
+            {
+                $x_less_rel_cash = $this->input->post('x_less_rel_cash');
+            }
+
+            if($landData['less_rel_bond'] == $this->input->post('x_less_rel_bond'))
+            {
+                $x_less_rel_bond = $landData['less_rel_bond'];
+            }
+            else
+            {
+                $x_less_rel_bond = $this->input->post('x_less_rel_bond');
+            }
+
+            if($landData['less_rel_bond_ao2'] == $this->input->post('x_less_rel_bond_ao2'))
+            {
+                $x_less_rel_bond_ao2 = $landData['less_rel_bond_ao2'];
+            }
+            else
+            {
+                $x_less_rel_bond_ao2 = $this->input->post('x_less_rel_bond_ao2');
+            }
+
+            if($landData['end_bal_total'] == $this->input->post('x_end_bal_total'))
+            {
+                $x_end_bal_total = $landData['end_bal_total'];
+            }
+            else
+            {
+                $x_end_bal_total = $this->input->post('x_end_bal_total');
+            }
+
+            if($landData['end_bal_cash'] == $this->input->post('x_end_bal_cash'))
+            {
+                $x_end_bal_cash = $landData['end_bal_cash'];
+            }
+            else
+            {
+                $x_end_bal_cash = $this->input->post('x_end_bal_cash');
+            }
+
+            if($landData['end_bal_bond'] == $this->input->post('x_end_bal_bond'))
+            {
+                $x_end_bal_bond = $landData['end_bal_bond'];
+            }
+            else
+            {
+                $x_end_bal_bond = $this->input->post('x_end_bal_bond');
+            }
+
+            // echo the array below to view posted data
+            $postData = array(
+                $id,
+                $x_date_recvd_dar,
+                $x_claim_fld_no,
+                $x_name_land_owner,
+                $x_no_fbs,
+                $x_area_per_title,
+                $x_area_acqrd,
+                $x_title_no,
+                $x_area_aprvd,
+                $x_easement,
+                $x_lot_no,
+                $x_land_use,
+                $x_prov_id,
+                $x_muni_city_id,
+                $x_brgy_id,
+                $x_land_val_total_land_value,
+                $x_land_val_cash,
+                $x_land_val_bond,
+                $x_status_id,
+                $x_pending_division,
+                $x_date_mov_cvpf,
+                $x_date_cod,
+                $x_date_last_ammended,
+                $x_date_returned,
+                $x_bond_serial_no,
+                $x_status_2,
+                $x_less_rel_total,
+                $x_less_rel_cash,
+                $x_less_rel_bond,
+                $x_less_rel_bond_ao2,
+                $x_end_bal_total,
+                $x_end_bal_cash,
+                $x_end_bal_bond,
+                $user_id
+            );
+
+            $updateResult = $landRegList->updateLandRegistration($id,
+                $x_date_recvd_dar,
+                $x_claim_fld_no,
+                $x_name_land_owner,
+                $x_no_fbs,
+                $x_area_per_title,
+                $x_area_acqrd,
+                $x_title_no,
+                $x_area_aprvd,
+                $x_easement,
+                $x_lot_no,
+                $x_land_use,
+                $x_prov_id,
+                $x_muni_city_id,
+                $x_brgy_id,
+                $x_land_val_total_land_value,
+                $x_land_val_cash,
+                $x_land_val_bond,
+                $x_status_id,
+                $x_pending_division,
+                $x_date_mov_cvpf,
+                $x_date_cod,
+                $x_date_last_ammended,
+                $x_date_returned,
+                $x_bond_serial_no,
+                $x_status_2,
+                $x_less_rel_total,
+                $x_less_rel_cash,
+                $x_less_rel_bond,
+                $x_less_rel_bond_ao2,
+                $x_end_bal_total,
+                $x_end_bal_cash,
+                $x_end_bal_bond,
+                $user_id);
+
+            if($updateResult == 1)
+            {
+                redirect('landregistration/index/landupdatesuccess','location');
+            }
         }
     }
 
