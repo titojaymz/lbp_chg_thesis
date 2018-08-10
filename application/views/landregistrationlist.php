@@ -53,33 +53,19 @@
                     </div>
                     <div class="widget-content">
                         <div class="table-responsive">
-                            <table data-sortable class="table">
+                            <table id="grid-data" class="table table-hover table-striped" data-toggle="bootgrid" data-ajax="true" data-url="/users/server">
                                 <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>System ID</th>
-                                    <th>Date Received from DAR</th>
-                                    <th>Claim folder number</th>
-                                    <th>Name of land owner</th>
+                                    <th data-column-id="##" data-title="commands" data-formatter="linkedit"></th>
+                                    <th data-column-id="title_no">Title no</th>
+                                    <th data-column-id="name_land_owner">Name of land owner</th>
+                                    <th data-column-id="no_fbs">No. of FBs</th>
+                                    <th data-column-id="land_use">Land use</th>
+                                    <th data-column-id="prov_name">Province</th>
+                                    <th data-column-id="muni_city_name">City/Municipality</th>
+                                    <th data-column-id="brgy_name">Barangay</th>
                                 </tr>
                                 </thead>
-
-                                <tbody>
-                                <?php foreach($landRegList as $row): ?>
-                                    <tr>
-                                        <td>
-                                            <div class="btn btn-group">
-                                                <a href="<?php echo base_url('landregistration/landregistrationedit/' .$row->land_reg_id ) ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-edit"></i></a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-                                            </div>
-                                        </td>
-                                        <td><?php echo $row->land_reg_id ?></td>
-                                        <td><?php echo $row->date_recvd_dar ?></td>
-                                        <td><?php echo $row->claim_fld_no ?></td>
-                                        <td><?php echo $row->name_land_owner ?></td>
-                                    </tr>
-                                <?php endforeach ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -93,3 +79,30 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            gridSettings =
+            {
+                ajax: true,
+                caseSensitive: false,
+                rowCount: [5, 10, 100],
+                rowSelect: true,
+                selection: false,
+                sorting: true,
+                url: "<?php echo base_url('landregistration/renderLandRegistration'); ?>",
+                requestHandler: function (request) {
+                    return request;
+                },
+                formatters: {
+                    "linkedit" : function(column, row) {
+                        //return "<a class='btn btn-outline-info btn-sm' href='#'><span> EDIT </span></a>";
+                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('landregistration/landregistrationedit/'); ?>/" + row.land_reg_id + "'><span> EDIT </span></a>";
+                    }
+                    // "linksub" : function(column, row) {
+                    // return "<a class='btn btn-outline-success btn-sm' href='<?php echo base_url(''); ?>/" + row.allotment_class_id + "'><span> PRODUCTION PLAN </span></a>";
+                    // }
+                }
+            };
+
+            $("#grid-data").bootgrid(gridSettings);
+        </script>

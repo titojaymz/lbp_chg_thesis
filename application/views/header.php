@@ -66,6 +66,11 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo base_url('assets/img/apple-touch-icon-144x144.png'); ?>" />
 	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('assets/img/apple-touch-icon-152x152.png'); ?>" />
 
+	<!-- bootgrid -->
+	<link href="<?php echo base_url('assets/bootgrid/js/jquery.bootgrid.css'); ?>" rel="stylesheet">
+	<script src="<?php echo base_url('assets/bootgrid/js/jquery-1.11.1.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/bootgrid/js/jquery.bootgrid.min.js'); ?>"></script>
+
 
 </head>
 <style>
