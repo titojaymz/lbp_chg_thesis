@@ -46,7 +46,7 @@
 						<i class='icon-music-1'></i><span>Reports</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
 					</a>
 					<ul>
-						<li><a href="#"><span>Consolidated Reports</span></a></li>
+						<li><a href="#"><span>Masterlist</span></a></li>
 					</ul>
 				</li>
 				<li class='has_sub'>

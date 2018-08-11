@@ -22,7 +22,7 @@ class Landregistration_model extends CI_Model
         if (isset($_REQUEST['searchPhrase']) )
         {
             $search=trim($_REQUEST['searchPhrase']);
-            $where.= " and ( a.name_land_owner LIKE '%".$search."%' ) ";
+            $where.= " and ( a.name_land_owner LIKE '%".$search."%' or a.title_no LIKE '%".$search."%' ) ";
             // $this->db->like('access_list_id', $search);
             // $this->db->like('access_list_name', $search);
         }
