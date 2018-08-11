@@ -8,7 +8,7 @@ class modeltester extends CI_Controller
 {
     public function index()
     {
-        $modeltester = new Reports();
+        $modeltester = new Reports_model();
 
         /*$method_tester = $modeltester->addLandRegistration(
             '2018-01-01','AAASSSDD-12345','Josef Baldo',2,123,23,'TITLE-ASD-123',123,123,'LOT 12','commerial',

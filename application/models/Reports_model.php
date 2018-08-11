@@ -4,7 +4,7 @@
  * Date: 11/08/2018
  * Time: 06:25
  */
-class Reports extends CI_Model
+class Reports_model extends CI_Model
 {
     public function getLandRegistration()
     {
