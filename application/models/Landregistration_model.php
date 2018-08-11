@@ -8,8 +8,58 @@ class Landregistration_model extends CI_Model
 {
     public function getAllLandRegistration()
     {
-        $query = $this->db->get('tbl_land_reg');
-        return $query->result();
+        $limit_lower = "";
+        $where =" a.DELETED=0 ";
+        $rows=25;
+        $current=1;
+        $limit_l=($current * $rows) - ($rows);
+        $limit_h=$limit_lower + $rows  ;
+
+        //Handles Sort querystring sent from Bootgrid
+
+
+        //Handles search  querystring sent from Bootgrid
+        if (isset($_REQUEST['searchPhrase']) )
+        {
+            $search=trim($_REQUEST['searchPhrase']);
+            $where.= " and ( a.name_land_owner LIKE '%".$search."%' or a.title_no LIKE '%".$search."%' ) ";
+            // $this->db->like('access_list_id', $search);
+            // $this->db->like('access_list_name', $search);
+        }
+
+        //Handles determines where in the paging count this result set falls in
+        if (isset($_REQUEST['rowCount']) )
+            $rows=$_REQUEST['rowCount'];
+
+        //calculate the low and high limits for the SQL LIMIT x,y clause
+        if (isset($_REQUEST['current']) )
+        {
+            $current=$_REQUEST['current'];
+            $limit_l=($current * $rows) - ($rows);
+            $limit_h=$rows ;
+        }
+
+        if ($rows==-1)
+            $limit="";  //no limit
+        else
+            $limit=" LIMIT $limit_l,$limit_h  ";
+
+        $sql = "SELECT
+                  a.*,
+                  b.prov_name as prov_name,
+                  c.muni_city_name as muni_city_name,
+                  d.brgy_name as brgy_name
+                  FROM `tbl_land_reg` as a
+                  INNER JOIN lib_provinces as b on a.prov_id=b.prov_id
+                  INNER JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
+                  INNER JOIN lib_barangay as d on a.brgy_id=d.brgy_id
+                  Where $where $limit";
+        $sql1 = "SELECT * FROM `tbl_land_reg` as a Where$where";
+        //echo $sql;
+        $query = $this->db->query($sql);
+        $query1 = $this->db->query($sql1);
+
+        return array($query->result(),$query1->num_rows());
     }
 
     public function addLandRegistration($date_recvd_dar,$claim_fld_no,$name_land_owner,$no_fbs,

@@ -1,8 +1,8 @@
 <?php
 /**
  * Created by Josef Friedrich Baldo
- * Date: 24/02/2018
- * Time: 5:37 PM
+ * Date: 11/08/2018
+ * Time: 08:50
  */
 ?>
 <div class="content-page">
@@ -79,30 +79,3 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            gridSettings =
-            {
-                ajax: true,
-                caseSensitive: false,
-                rowCount: [5, 10, 100],
-                rowSelect: true,
-                selection: false,
-                sorting: true,
-                url: "<?php echo base_url('landregistration/renderLandRegistration'); ?>",
-                requestHandler: function (request) {
-                    return request;
-                },
-                formatters: {
-                    "linkedit" : function(column, row) {
-                        //return "<a class='btn btn-outline-info btn-sm' href='#'><span> EDIT </span></a>";
-                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('landregistration/landregistrationedit/'); ?>/" + row.land_reg_id + "'><span> EDIT </span></a>";
-                    }
-                    // "linksub" : function(column, row) {
-                    // return "<a class='btn btn-outline-success btn-sm' href='<?php echo base_url(''); ?>/" + row.allotment_class_id + "'><span> PRODUCTION PLAN </span></a>";
-                    // }
-                }
-            };
-
-            $("#grid-data").bootgrid(gridSettings);
-        </script>

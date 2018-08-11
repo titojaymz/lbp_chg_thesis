@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('User_model','Landregistration_model');
+$autoload['model'] = array('User_model','Landregistration_model','Reports');
 
 
 /* End of file autoload.php */
