@@ -11,4 +11,10 @@ class Reports_model extends CI_Model
         $a = $this->db->get('tbl_land_reg');
         return $a->result_array();
     }
+
+    public function getNameById($table_name,$id,$param)
+    {
+        $q = $this->db->get_where($table_name,array($id=>$param));
+        return $q->row();
+    }
 }

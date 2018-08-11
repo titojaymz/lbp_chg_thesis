@@ -30,6 +30,7 @@
             <div class="col-md-12">
                 <div class="btn btn-group">
                     <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a>
                 </div>
             </div>
         </div>
@@ -76,6 +77,7 @@
             <div class="col-md-12">
                 <div class="btn btn-group">
                     <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a>
                 </div>
             </div>
         </div>
