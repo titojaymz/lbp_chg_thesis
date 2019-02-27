@@ -46,13 +46,15 @@ class Landregistration_model extends CI_Model
 
         $sql = "SELECT
                   a.*,
+                  e.region_name,
                   b.prov_name as prov_name,
                   c.muni_city_name as muni_city_name,
                   d.brgy_name as brgy_name
                   FROM `tbl_land_reg` as a
-                  INNER JOIN lib_provinces as b on a.prov_id=b.prov_id
-                  INNER JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
-                  INNER JOIN lib_barangay as d on a.brgy_id=d.brgy_id
+                  LEFT JOIN lib_provinces as b on a.prov_id=b.prov_id
+                  LEFT JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
+                  LEFT JOIN lib_barangay as d on a.brgy_id=d.brgy_id
+                  LEFT JOIN lib_regions e on a.region_id=e.region_id
                   Where $where $limit";
         $sql1 = "SELECT * FROM `tbl_land_reg` as a Where$where";
         //echo $sql;
@@ -64,7 +66,7 @@ class Landregistration_model extends CI_Model
 
     public function addLandRegistration($date_recvd_dar,$claim_fld_no,$name_land_owner,$no_fbs,
                     $area_per_title,$area_acqrd,$title_no,$area_aprvd,$easementt,$lot_no,
-                    $land_use,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
+                    $land_use,$region_id,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
                     $land_val_cash,$land_val_bond,$status,$pending_division,$date_mov_cvpf,
                     $date_cod,$date_last_ammended,$date_returned,$bond_serial_no,
                     $status2,$less_rel_total,$less_rel_cash,$less_rel_bond,$less_rel_bond_ao2,
@@ -75,7 +77,7 @@ class Landregistration_model extends CI_Model
         $this->db->query('INSERT INTO tbl_land_reg
                       (date_recvd_dar, claim_fld_no, name_land_owner,
                       no_fbs, area_per_title, area_acqrd, title_no,
-                      area_aprvd, easementt, lot_no, land_use, prov_id,
+                      area_aprvd, easementt, lot_no, land_use, region_id, prov_id,
                       muni_city_id, brgy_id, land_val_total_land_value,
                       land_val_cash, land_val_bond, status_id, pending_division,
                       date_mov_cvpf, date_cod, date_last_ammended,
@@ -95,6 +97,7 @@ class Landregistration_model extends CI_Model
                 "'.$easementt.'",
                 "'.$lot_no.'",
                 "'.$land_use.'",
+                "'.$region_id.'",
                 "'.$prov_id.'",
                 "'.$muni_city_id.'",
                 "'.$brgy_id.'",
@@ -164,7 +167,7 @@ class Landregistration_model extends CI_Model
 
     public function updateLandRegistration($id,$date_recvd_dar,$claim_fld_no,$name_land_owner,$no_fbs,
                                         $area_per_title,$area_acqrd,$title_no,$area_aprvd,$easementt,$lot_no,
-                                        $land_use,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
+                                        $land_use,$region_id,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
                                         $land_val_cash,$land_val_bond,$status,$pending_division,$date_mov_cvpf,
                                         $date_cod,$date_last_ammended,$date_returned,$bond_serial_no,
                                         $status2,$less_rel_total,$less_rel_cash,$less_rel_bond,$less_rel_bond_ao2,
@@ -186,6 +189,7 @@ class Landregistration_model extends CI_Model
             easementt = "'.$easementt.'",
             lot_no = "'.$lot_no.'",
             land_use = "'.$land_use.'",
+            region_id = "'.$region_id.'",
             prov_id = "'.$prov_id.'",
             muni_city_id = "'.$muni_city_id.'",
             brgy_id = "'.$brgy_id.'",
@@ -222,5 +226,11 @@ class Landregistration_model extends CI_Model
             $queryReult = 1;
         }
         return $queryReult;
+    }
+
+    public function getRegions() // provinces were filtered by default to region 5
+    {
+        $query = $this->db->get('lib_regions');
+        return $query->result();
     }
 }

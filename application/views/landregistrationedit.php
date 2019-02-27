@@ -44,7 +44,7 @@
         */ ?>
                 </div>
             </div>
-            <body onload="getbodyCities();getbodyBrgy();"></body>
+            <body onload="getbodyProv();getbodyCities();getbodyBrgy();"></body>
             <div class="widget-content padding">
                 <form class="form-horizontal" role="form" method="post">
                     <div class="form-group"> <!-- Date Received from DAR -->
@@ -113,14 +113,22 @@
                             <input type="text" class="form-control"  placeholder="Land use" name="x_land_use" id="x_land_use" maxlength="50" value="<?php echo $landregistrationdata['land_use'] ?>" required>
                         </div>
                     </div> <!-- ./Land use -->
+                    <div class="form-group"> <!-- Regions -->
+                        <label for="input-text" class="col-sm-2 control-label">Region</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="x_region_id" id="x_region_id" onchange="getProvince()" required>
+                                <option value="">Please select</option>
+                                <?php foreach($lib_regions as $regionlist): ?>
+                                    <option <?php echo ($regionlist->region_id == $landregistrationdata['region_id'])? 'selected' : '' ?> value="<?php echo $regionlist->region_id ?>"><?php echo $regionlist->region_name ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div> <!-- ./Regions -->
                     <div class="form-group"> <!-- Province -->
                         <label for="input-text" class="col-sm-2 control-label">Province</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="x_prov_id" id="x_prov_id" onchange="getCities()" required>
+                        <div class="col-sm-10" id="prov_div">
+                            <select class="form-control" name="x_prov_id" id="x_prov_id" required>
                                 <option value="">Please select</option>
-                                <?php foreach($prov_data as $provList): ?>
-                                    <option value="<?php echo $provList->prov_id ?>" <?php if($provList->prov_id == $landregistrationdata['prov_id']){ echo 'selected'; }  ?>><?php echo $provList->prov_name ?></option>
-                                <?php endforeach ?>
                             </select>
                         </div>
                     </div> <!-- ./Province -->
@@ -262,6 +270,21 @@
         </div> <!-- ./widget -->
 
         <script>
+            function getProvince() {
+                var xhttp = new XMLHttpRequest();
+                var region_id = document.getElementById('x_region_id').value;
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("prov_div").innerHTML =
+                            this.responseText;
+                        document.getElementById("x_muni_city_id").value = "";
+                        document.getElementById("x_brgy_id").value = "";
+                    }
+                };
+                xhttp.open("GET", "<?php echo base_url('landregistration/ajaxProvOpt/?region_id=') ?>" + region_id, true);
+                xhttp.send();
+            }
+
             function getCities() {
                 var xhttp = new XMLHttpRequest();
                 var prov_id = document.getElementById('x_prov_id').value;
@@ -289,6 +312,19 @@
                 xhttp.send();
             }
 
+            function getbodyProv() {
+                var xhttp = new XMLHttpRequest();
+                var region_id = document.getElementById('x_region_id').value;
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("prov_div").innerHTML =
+                            this.responseText;
+                    }
+                };
+                xhttp.open("GET", "<?php echo base_url('landregistration/ajaxbodyProvOpt/?region_id=') ?>" + "<?php echo $landregistrationdata['region_id'] ?>" + "&prov_id=<?php echo $landregistrationdata['prov_id'] ?>", true);
+                xhttp.send();
+            }
+
             function getbodyCities() {
                 var xhttp = new XMLHttpRequest();
                 var prov_id = document.getElementById('x_prov_id').value;
@@ -296,7 +332,6 @@
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById("city_div").innerHTML =
                             this.responseText;
-                        document.getElementById("x_brgy_id").value = "";
                     }
                 };
                 xhttp.open("GET", "<?php echo base_url('landregistration/ajaxbodyCitiesOpt/?prov_id=') ?>" + "<?php echo $landregistrationdata['prov_id'] ?>" + "&muni_city_id=<?php echo $landregistrationdata['muni_city_id'] ?>", true);

@@ -82,7 +82,8 @@ class landregistration extends CI_Controller
                 'access_level' => $this->accessLevel(),
                 'landRegList' => $landRegList->getAllLandRegistration(),
                 'prov_data' => $landRegList->getProvinces(),
-                'lib_status' => $landRegList->getStatus()
+                'lib_status' => $landRegList->getStatus(),
+                'lib_regions' => $landRegList->getRegions()
             );
 
             $this->load->view('header');
@@ -104,6 +105,7 @@ class landregistration extends CI_Controller
             $x_easement = $this->input->post('x_easement');
             $x_lot_no = $this->input->post('x_lot_no');
             $x_land_use = $this->input->post('x_land_use');
+            $x_region_id = $this->input->post('x_region_id');
             $x_prov_id = $this->input->post('x_prov_id');
             $x_muni_city_id = $this->input->post('x_muni_city_id');
             $x_brgy_id = $this->input->post('x_brgy_id');
@@ -127,7 +129,7 @@ class landregistration extends CI_Controller
             $x_end_bal_bond = $this->input->post('x_end_bal_bond');
 
             $insertResult = $landRegList->addLandRegistration($x_date_recvd_dar,$x_claim_fld_no,$x_name_land_owner,$x_no_fbs,$x_area_per_title,$x_area_acqrd,$x_title_no,$x_area_aprvd,
-                                                $x_easement,$x_lot_no,$x_land_use,$x_prov_id,$x_muni_city_id,$x_brgy_id,$x_land_val_total_land_value,$x_land_val_cash,
+                                                $x_easement,$x_lot_no,$x_land_use,$x_region_id,$x_prov_id,$x_muni_city_id,$x_brgy_id,$x_land_val_total_land_value,$x_land_val_cash,
                                                 $x_land_val_bond,$x_status_id,$x_pending_division,$x_date_mov_cvpf,$x_date_cod,$x_date_last_ammended,$x_date_returned,
                                                 $x_bond_serial_no,$x_status_2,$x_less_rel_total,$x_less_rel_cash,$x_less_rel_bond,$x_less_rel_bond_ao2,$x_end_bal_total,
                                                 $x_end_bal_cash,$x_end_bal_bond,$user_id);
@@ -194,6 +196,11 @@ class landregistration extends CI_Controller
             array(
                 'field'   => 'x_land_use',
                 'label'   => 'Land use',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'x_region_id',
+                'label'   => 'Region',
                 'rules'   => 'required'
             ),
             array(
@@ -306,6 +313,22 @@ class landregistration extends CI_Controller
         return $this->form_validation->set_rules($config);
     }
 
+    public function ajaxProvOpt()
+    {
+        $region_id = $_REQUEST['region_id'];
+        $landRegList = new Landregistration_model();
+        $data['prov_list'] = $landRegList->getProvinces($region_id);
+        $this->load->view('ajax_prov_opt',$data);
+    }
+
+    public function ajaxProvBodyOpt()
+    {
+        $region_id = $_REQUEST['region_id'];
+        $landRegList = new Landregistration_model();
+        $data['prov_data'] = $landRegList->getProvinces($region_id);
+        $this->load->view('ajax_body_prov_opt',$data);
+    }
+
     public function ajaxCitiesOpt()
     {
         $prov_id = $_REQUEST['prov_id'];
@@ -320,6 +343,14 @@ class landregistration extends CI_Controller
         $landRegList = new Landregistration_model();
         $data['cities_list'] = $landRegList->getBrgy($prov_id);
         $this->load->view('ajax_brgy_opt',$data);
+    }
+
+    public function ajaxbodyProvOpt()
+    {
+        $landRegList = new Landregistration_model();
+        $data['prov_data'] = $landRegList->getProvinces($_REQUEST['region_id']);
+        $data['ajax_prov_id'] = $_REQUEST['prov_id'];
+        $this->load->view('ajax_body_prov_opt',$data);
     }
 
     public function ajaxbodyCitiesOpt()
@@ -365,7 +396,8 @@ class landregistration extends CI_Controller
                 'landRegList' => $landRegList->getAllLandRegistration(),
                 'prov_data' => $landRegList->getProvinces(),
                 'lib_status' => $landRegList->getStatus(),
-                'landregistrationdata' => $landData
+                'landregistrationdata' => $landData,
+                'lib_regions' => $landRegList->getRegions()
             );
 
             $this->load->view('header');
@@ -473,6 +505,15 @@ class landregistration extends CI_Controller
             else
             {
                 $x_land_use = $this->input->post('x_land_use');
+            }
+
+            if($landData['region_id'] == $this->input->post('x_region_id'))
+            {
+                $x_region_id = $landData['region_id'];
+            }
+            else
+            {
+                $x_region_id = $this->input->post('x_region_id');
             }
 
             if($landData['prov_id'] == $this->input->post('x_prov_id'))
@@ -678,6 +719,7 @@ class landregistration extends CI_Controller
                 $x_easement,
                 $x_lot_no,
                 $x_land_use,
+                $x_region_id,
                 $x_prov_id,
                 $x_muni_city_id,
                 $x_brgy_id,
@@ -714,6 +756,7 @@ class landregistration extends CI_Controller
                 $x_easement,
                 $x_lot_no,
                 $x_land_use,
+                $x_region_id,
                 $x_prov_id,
                 $x_muni_city_id,
                 $x_brgy_id,
