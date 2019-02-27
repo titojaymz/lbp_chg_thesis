@@ -62,6 +62,7 @@
                                     <th data-column-id="name_land_owner">Name of land owner</th>
                                     <th data-column-id="no_fbs">No. of FBs</th>
                                     <th data-column-id="land_use">Land use</th>
+                                    <th data-column-id="region_name">Region</th>
                                     <th data-column-id="prov_name">Province</th>
                                     <th data-column-id="muni_city_name">City/Municipality</th>
                                     <th data-column-id="brgy_name">Barangay</th>
