@@ -23,7 +23,7 @@
 
 				</li>
 				<li>
-					<a href="<?php echo base_url('landregistration') ?>"><i class='icon-pencil'></i><span>Land Registration</span></a>
+					<a href="<?php echo base_url('landregistration') ?>"><i class='icon-pencil'></i><span>Masterlist</span></a>
 
 				</li>
 				<?php /* ?>
@@ -46,7 +46,7 @@
 								<a href="<?php echo base_url('psgc_region') ?>"><span>PSGC Region</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Land Classification</span></a>
+								<a href="<?php echo base_url('landclass') ?>"><span>Land Classification</span></a>
 							</li>
 							<li>
 								<a href="#"><span>Signatories</span></a>
