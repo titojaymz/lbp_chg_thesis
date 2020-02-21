@@ -12,7 +12,7 @@
     </ul>
     <div class="content">
         <div class="page-heading">
-            <h1><i class='icon-address-book-alt'></i>Land Registration</h1>
+            <h1><i class='icon-address-book-alt'></i>Landowners Compensation Masterlist</h1>
         </div>
 
         <?php if ($system_message <> ''){ ?>
