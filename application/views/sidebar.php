@@ -46,15 +46,6 @@
 								<a href="<?php echo base_url('psgc_region') ?>"><span>PSGC Region</span></a>
 							</li>
 							<li>
-								<a href="#"><span>PSGC Province</span></a>
-							</li>
-							<li>
-								<a href="#"><span>PSGC City/Municipality</span></a>
-							</li>
-							<li>
-								<a href="#"><span>PSGC Barangay</span></a>
-							</li>
-							<li>
 								<a href="#"><span>Land Classification</span></a>
 							</li>
 							<li>
