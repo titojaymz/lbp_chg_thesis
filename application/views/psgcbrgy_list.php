@@ -12,7 +12,7 @@
     </ul>
     <div class="content">
         <div class="page-heading">
-            <h1><i class='icon-address-book-alt'></i>Landowners Compensation Masterlist</h1>
+            <h1><i class='icon-address-book-alt'></i>Barangay</h1>
         </div>
 
         <?php if ($system_message <> ''){ ?>
@@ -29,8 +29,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
-                    <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a>
+                    <!--<a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
             </div>
         </div>
@@ -57,15 +57,11 @@
                             <table id="grid-data" class="table table-hover table-striped" data-toggle="bootgrid" data-ajax="true" data-url="/users/server">
                                 <thead>
                                 <tr>
-                                    <th data-column-id="##" data-title="commands" data-formatter="linkedit"></th>
-                                    <th data-column-id="title_no">Title no</th>
-                                    <th data-column-id="name_land_owner">Name of land owner</th>
-                                    <th data-column-id="no_fbs">No. of FBs</th>
-                                    <th data-column-id="land_use">Land use</th>
-                                    <th data-column-id="region_name">Region</th>
-                                    <th data-column-id="prov_name">Province</th>
-                                    <th data-column-id="muni_city_name">City/Municipality</th>
-                                    <th data-column-id="brgy_name">Barangay</th>
+                                    <!--<th data-column-id="##" data-title="commands" data-formatter="linkedit"></th>-->
+                                    <th data-column-id="brgy_id">ID</th>
+                                    <th data-column-id="muni_city_id">Muni-City ID</th>
+                                    <th data-column-id="brgy_psgc">PSGC</th>
+                                    <th data-column-id="brgy_name">Name</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -77,8 +73,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
-                    <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a>
+                    <!--<a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
             </div>
         </div>
@@ -92,7 +88,7 @@
                 rowSelect: true,
                 selection: false,
                 sorting: true,
-                url: "<?php echo base_url('landregistration/renderLandRegistration'); ?>",
+                url: "<?php echo base_url('psgc_region/renderbrgylist/' . $muni_city_id); ?>",
                 requestHandler: function (request) {
                     return request;
                 },

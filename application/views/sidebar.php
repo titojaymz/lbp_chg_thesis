@@ -19,9 +19,14 @@
 		<div id="sidebar-menu">
 			<ul>
 				<li>
-						<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
+					<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
 
 				</li>
+				<li>
+					<a href="<?php echo base_url('landregistration') ?>"><i class='icon-pencil'></i><span>Land Registration</span></a>
+
+				</li>
+				<?php /* ?>
 				<li class='has_sub'>
 					<a href='javascript:void(0);'>
 						<i class='icon-pencil-3'></i><span>Forms</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
@@ -30,13 +35,31 @@
 						<li><a href="<?php echo base_url('landregistration') ?>"><span>Land Registration</span></a></li>
 					</ul>
 				</li>
+				<?php */ ?>
 <!--				--><?php //if($access == -1){ ?>
 					<li class='has_sub'>
 						<a href='javascript:void(0);'>
 							<i class='icon-book-2'></i><span>Libraries</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
 						</a>
 						<ul>
-							<li><a href="#"><span>Status</span></a></li>
+							<li>
+								<a href="<?php echo base_url('psgc_region') ?>"><span>PSGC Region</span></a>
+							</li>
+							<li>
+								<a href="#"><span>Land Classification</span></a>
+							</li>
+							<li>
+								<a href="#"><span>Signatories</span></a>
+							</li>
+							<li>
+								<a href="#"><span>Position</span></a>
+							</li>
+							<li>
+								<a href="#"><span>Division</span></a>
+							</li>
+							<li>
+								<a href="#"><span>Status</span></a>
+							</li>
 						</ul>
 					</li>
 

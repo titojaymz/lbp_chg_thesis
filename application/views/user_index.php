@@ -36,7 +36,9 @@ if (!$this->session->userdata('user_data'))
 <?php } ?>
 <div class="container">
     <div class="full-content-center">
-        <h2 class="text-center"><img src="<?php echo base_url('images/logo_large.png') ?>"><br><a href="#" style="color:ghostwhite">Landbank Monitoring System</a></h2>
+        <h2 class="text-center"><img src="<?php echo base_url('images/logo_large.png') ?>"><br><a href="#" style="color:ghostwhite">Landowners Compensation Monitoring System<br>
+                LandBank of the Philippines<br>
+                Agrarian Operations Center</a></h2>
         <div class="login-wrap animated flipInX">
             <div class="login-block">
                 <form role="form" method="post">
