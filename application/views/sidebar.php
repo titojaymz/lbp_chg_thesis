@@ -46,7 +46,7 @@
 								<a href="<?php echo base_url('psgc_region') ?>"><span>PSGC Region</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Land Classification</span></a>
+								<a href="<?php echo base_url('landclass') ?>"><span>Land Classification</span></a>
 							</li>
 							<li>
 								<a href="#"><span>Signatories</span></a>
