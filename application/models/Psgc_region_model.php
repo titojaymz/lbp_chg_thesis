@@ -6,7 +6,7 @@
  * Date: 2/21/2020
  * Time: 10:24 AM
  */
-class Psgc_region extends CI_Model
+class Psgc_region_model extends CI_Model
 {
     public function getAllRegions()
     {
