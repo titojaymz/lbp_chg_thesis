@@ -94,7 +94,12 @@
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-cogs overlay"></i>
-                        <input type="text" class="form-control text-input" placeholder="Position" name="x_position" id="x_position" required>
+                        <select class="form-control" name="x_position" id="x_position" required>
+                            <option value="">Select position</option>
+                            <?php foreach($positions as $positiondata){ ?>
+                                <option value="<?php echo $positiondata->position_id ?>"><?php echo $positiondata->position_name ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-envelope overlay"></i>

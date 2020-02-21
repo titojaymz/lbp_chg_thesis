@@ -34,6 +34,12 @@ class Position_model extends CI_Model
         return $q->row();
     }
 
+    public function getPositionSelect()
+    {
+        $q = $this->db->get('lib_positions');
+        return $q->result();
+    }
+
     public function getPositions()
     {
         $limit_lower = "";

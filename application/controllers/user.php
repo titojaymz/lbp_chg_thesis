@@ -167,12 +167,15 @@ class user extends CI_Controller
 
         $psgc_region = new Psgc_region_model();
 
+        $positionData = new Position_model();
+
         $this->validateRegister();
 
         if(!$this->form_validation->run())
         {
             $data['system_message'] = false;
             $data['psgc_region'] = $psgc_region->getRegionSelect();
+            $data['positions'] = $positionData->getPositionSelect();
         }
         else
         {
