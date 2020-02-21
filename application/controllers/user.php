@@ -32,8 +32,13 @@ class user extends CI_Controller
 
         if(!$this->form_validation->run())
         {
+            $url_msg = $_REQUEST['system_message'];
+            if($url_msg == 'rs')
+            {
+                $sys_msg = 'Registration success';
+            }
             $data = array(
-                'system_message' => ''
+                'system_message' => $sys_msg
             );
         }
         else
@@ -160,29 +165,31 @@ class user extends CI_Controller
     {
         $userModel = new User_model();
 
-        $agencySelector = $this->agency_selector('x_group_code',NULL,'form-control',TRUE);
+        $psgc_region = new Psgc_region_model();
 
         $this->validateRegister();
 
         if(!$this->form_validation->run())
         {
             $data['system_message'] = false;
-            $data['agencySelector'] = $agencySelector;
+            $data['psgc_region'] = $psgc_region->getRegionSelect();
         }
         else
         {
-            $x_lastname = $this->input->post('x_lastname');
+            $x_username = $this->input->post('x_username');
             $x_firstname = $this->input->post('x_firstname');
             $x_middlename = $this->input->post('x_middlename');
+            $x_lastname = $this->input->post('x_lastname');
             $x_extname = $this->input->post('x_extname');
-            $x_group_code = $this->input->post('x_group_code');
-            $x_email = $this->input->post('x_email');
-            $x_username = $this->input->post('x_username');
             $x_password = $this->encrypt->encode($this->input->post('x_password'));
+            $x_lbp_no = $this->input->post('x_lbp_no');
+            $x_region_id = $this->input->post('x_region_id');
+            $x_position = $this->input->post('x_position');
+            $x_email = $this->input->post('x_email');
 
-            $result = $userModel->addUser($x_lastname,$x_firstname,$x_middlename,$x_extname,$x_username,$x_email,$x_password,$x_group_code);
+            $result = $userModel->addUser($x_username,$x_firstname,$x_middlename,$x_lastname,$x_extname,$x_password,$x_lbp_no,$x_region_id,$x_position,$x_email);
 
-            if($result == 1)
+            if($result)
             {
                 /*$data['system_message'] = 'Registration success!';
                 $data['agencySelector'] = $agencySelector;*/

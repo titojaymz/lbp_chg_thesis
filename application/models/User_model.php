@@ -21,31 +21,22 @@ class User_model extends CI_Model
         return $query->result();
     }
 
-    public function addUser($full_name,$username,$email,$passwd)
+    public function addUser($x_username,$x_firstname,$x_middlename,$x_lastname,$x_extname,$x_password,$x_lbp_no,$x_region_id,$x_position,$x_email)
     {
-        $this->db->trans_begin();
-
-        $this->db->query('INSERT INTO users(full_name, username, email, passwd, date_created)
-        VALUES
-        (
-        "'.$full_name.'",
-        "'.$username.'",
-        "'.$email.'",
-        "'.$passwd.'",
-        NOW()
-        )
-        ');
-        if ($this->db->trans_status() === FALSE)
-        {
-            $this->db->trans_rollback();
-            $queryReult = 0;
-        }
-        else
-        {
-            $this->db->trans_commit();
-            $queryReult = 1;
-        }
-        return $queryReult;
+        $data = array(
+            'username' => $x_username,
+            'firstname' => $x_firstname,
+            'middlename' => $x_middlename,
+            'lastname' => $x_lastname,
+            'extname' => $x_extname,
+            'passwd' => $x_password,
+            'lbp_id_no' => $x_lbp_no,
+            'region_code' => $x_region_id,
+            'position_id' => $x_position,
+            'email' => $x_email
+        );
+        $this->db->insert('users',$data);
+        return $this->db->insert_id();
     }
 
     public function getUserDetails($uid = null)

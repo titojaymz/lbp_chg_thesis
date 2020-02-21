@@ -239,4 +239,10 @@ class Psgc_region_model extends CI_Model
 
         return array($query->result(),$query1->num_rows());
     }
+
+    public function getRegionSelect()
+    {
+        $q = $this->db->get('lib_regions');
+        return $q->result();
+    }
 }
