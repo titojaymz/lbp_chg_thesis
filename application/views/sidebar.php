@@ -52,7 +52,7 @@
 								<a href="#"><span>Signatories</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Position</span></a>
+								<a href="<?php echo base_url('position') ?>"><span>Position</span></a>
 							</li>
 							<li>
 								<a href="#"><span>Division</span></a>
