@@ -49,7 +49,7 @@
 								<a href="<?php echo base_url('landclass') ?>"><span>Land Classification</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Signatories</span></a>
+								<a href="<?php echo base_url('signatory') ?>"><span>Signatories</span></a>
 							</li>
 							<li>
 								<a href="<?php echo base_url('position') ?>"><span>Position</span></a>
