@@ -263,6 +263,17 @@
                             <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Bond (Ending balances)" name="x_end_bal_bond" id="x_end_bal_bond" maxlength="11" value="<?php echo set_value('x_end_bal_bond'); ?>" onchange="auto_x_total_ending_balances()" required>
                         </div>
                     </div> <!-- ./Bond (Ending balances) -->
+                    <div class="form-group"> <!-- Land Classification -->
+                        <label for="input-text" class="col-sm-2 control-label">Land Classification</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="x_land_class_id" id="x_land_class_id" required>
+                                <option value="">Please select</option>
+                                <?php foreach($landclass as $landclassData): ?>
+                                    <option value="<?php echo $landclassData->land_class_id ?>"><?php echo $landclassData->land_class_name ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div> <!-- ./Land Classification -->
                     <button class="btn btn-sm btn-success" type="submit">Save</button>
                 </form>
             </div> <!-- ./widget-header transparent -->
