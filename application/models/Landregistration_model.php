@@ -171,7 +171,7 @@ class Landregistration_model extends CI_Model
                                         $land_val_cash,$land_val_bond,$status,$pending_division,$date_mov_cvpf,
                                         $date_cod,$date_last_ammended,$date_returned,$bond_serial_no,
                                         $status2,$less_rel_total,$less_rel_cash,$less_rel_bond,$less_rel_bond_ao2,
-                                        $end_bal_total,$end_bal_cash,$end_bal_bond,$modified_by)
+                                        $end_bal_total,$end_bal_cash,$end_bal_bond,$modified_by,$land_class_id)
     {
         $this->db->trans_begin();
 
@@ -212,7 +212,8 @@ class Landregistration_model extends CI_Model
             end_bal_cash = "'.$end_bal_cash.'",
             end_bal_bond = "'.$end_bal_bond.'",
             modified_by = "'.$modified_by.'",
-            date_modified = NOW()
+            date_modified = NOW(),
+            land_class_id = "'.$land_class_id.'"
             WHERE
             land_reg_id =' . $id);
         if ($this->db->trans_status() === FALSE)

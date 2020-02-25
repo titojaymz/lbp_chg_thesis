@@ -72,6 +72,7 @@ class landregistration extends CI_Controller
         $user_id = $this->session->userdata('user_id');
 
         $landRegList = new Landregistration_model();
+        $landclass = new Land_class_model();
 
         $this->validatelandregistrationadd();
 
@@ -83,7 +84,8 @@ class landregistration extends CI_Controller
                 'landRegList' => $landRegList->getAllLandRegistration(),
                 'prov_data' => $landRegList->getProvinces(),
                 'lib_status' => $landRegList->getStatus(),
-                'lib_regions' => $landRegList->getRegions()
+                'lib_regions' => $landRegList->getRegions(),
+                'landclass' => $landclass->getLandClassSelect()
             );
 
             $this->load->view('header');
@@ -307,6 +309,16 @@ class landregistration extends CI_Controller
                 'field'   => 'x_end_bal_bond',
                 'label'   => 'Bond (Ending balances)',
                 'rules'   => 'required|numeric'
+            ),
+            array(
+                'field'   => 'x_land_class_id',
+                'label'   => 'Land Classification',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'x_land_class_id',
+                'label'   => 'Land Classification',
+                'rules'   => 'required'
             )
         );
 
@@ -384,6 +396,8 @@ class landregistration extends CI_Controller
 
         $landRegList = new Landregistration_model();
 
+        $landclass = new Land_class_model();
+
         $landData = $landRegList->getDetailsById($id);
 
         $this->validatelandregistrationadd();
@@ -397,7 +411,8 @@ class landregistration extends CI_Controller
                 'prov_data' => $landRegList->getProvinces(),
                 'lib_status' => $landRegList->getStatus(),
                 'landregistrationdata' => $landData,
-                'lib_regions' => $landRegList->getRegions()
+                'lib_regions' => $landRegList->getRegions(),
+                'landclass' => $landclass->getLandClassSelect()
             );
 
             $this->load->view('header');
@@ -705,6 +720,15 @@ class landregistration extends CI_Controller
                 $x_end_bal_bond = $this->input->post('x_end_bal_bond');
             }
 
+            if($landData['land_class_id'] == $this->input->post('x_land_class_id'))
+            {
+                $x_land_class_id = $landData['land_class_id'];
+            }
+            else
+            {
+                $x_land_class_id = $this->input->post('x_land_class_id');
+            }
+
             // echo the array below to view posted data
             $postData = array(
                 $id,
@@ -778,7 +802,8 @@ class landregistration extends CI_Controller
                 $x_end_bal_total,
                 $x_end_bal_cash,
                 $x_end_bal_bond,
-                $user_id);
+                $user_id,
+                $x_land_class_id);
 
             if($updateResult == 1)
             {
