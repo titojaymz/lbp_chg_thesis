@@ -22,7 +22,7 @@ class Landregistration_model extends CI_Model
         if (isset($_REQUEST['searchPhrase']) )
         {
             $search=trim($_REQUEST['searchPhrase']);
-            $where.= " and ( a.name_land_owner LIKE '%".$search."%' or a.title_no LIKE '%".$search."%' ) ";
+            $where.= " and ( a.name_land_owner LIKE '%".$search."%' or a.title_no LIKE '%".$search."%' or f.land_class_name LIKE '%".$search."%' ) ";
             // $this->db->like('access_list_id', $search);
             // $this->db->like('access_list_name', $search);
         }
@@ -49,14 +49,28 @@ class Landregistration_model extends CI_Model
                   e.region_name,
                   b.prov_name as prov_name,
                   c.muni_city_name as muni_city_name,
-                  d.brgy_name as brgy_name
+                  d.brgy_name as brgy_name,
+                  f.land_class_name
                   FROM `tbl_land_reg` as a
                   LEFT JOIN lib_provinces as b on a.prov_id=b.prov_id
                   LEFT JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
                   LEFT JOIN lib_barangay as d on a.brgy_id=d.brgy_id
                   LEFT JOIN lib_regions e on a.region_id=e.region_id
+                  LEFT JOIN lib_land_class as f on a.land_class_id=f.land_class_id
                   Where $where $limit";
-        $sql1 = "SELECT * FROM `tbl_land_reg` as a Where$where";
+        $sql1 = "SELECT
+                  a.*,
+                  e.region_name,
+                  b.prov_name as prov_name,
+                  c.muni_city_name as muni_city_name,
+                  d.brgy_name as brgy_name,
+                  f.land_class_name
+                  FROM `tbl_land_reg` as a
+                  LEFT JOIN lib_provinces as b on a.prov_id=b.prov_id
+                  LEFT JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
+                  LEFT JOIN lib_barangay as d on a.brgy_id=d.brgy_id
+                  LEFT JOIN lib_regions e on a.region_id=e.region_id
+                  LEFT JOIN lib_land_class as f on a.land_class_id=f.land_class_id Where $where";
         //echo $sql;
         $query = $this->db->query($sql);
         $query1 = $this->db->query($sql1);
