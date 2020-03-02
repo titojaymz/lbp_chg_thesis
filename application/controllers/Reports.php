@@ -234,4 +234,14 @@ class Reports extends CI_Controller
         //force user to download the Excel file without writing it to server's HD
         $objWriter->save('php://output');
     }
+
+    public function approvedClaims()
+    {
+        $reports = new Reports_model();
+        $data = array(
+            'landclass' => $reports->getLandClass(),
+            'apprv_claims' => $reports->getApproveClaims(1)
+        );
+        $this->load->view('approve_claims',$data);
+    }
 }
