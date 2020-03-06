@@ -58,6 +58,15 @@ class User_model extends CI_Model
         $result = $query->row();
         return $result->passwd;
     }
+
+    public function activateUser($uid,$userlevel)
+    {
+        $data = array(
+            'access_level' => $userlevel
+        );
+        $this->db->update('users',$data,array('uid'=>$uid));
+        return $this->db->affected_rows();
+    }
 }
 
 

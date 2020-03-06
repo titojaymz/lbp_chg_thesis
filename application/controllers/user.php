@@ -97,12 +97,24 @@ class user extends CI_Controller
             redirect('user','location');
         }
 
+        $message = $_REQUEST['mes'];
+
+        if($message <> null)
+        {
+            $sendMeh = $message;
+        }
+        else
+        {
+            $sendMeh = '';
+        }
+
         $data['access_level'] = $this->accessLevel();
 
         $userlist = new User_model();
 
         $data['system_message'] = '';
         $data['userlist'] = $userlist->getAllUsers();
+        $data['sendMeh'] = $sendMeh;
 
         $this->load->view('header');
         $this->load->view('navbar',$data);
@@ -607,5 +619,44 @@ class user extends CI_Controller
         );
 
         return $this->form_validation->set_rules($config);
+    }
+
+    public function userlevellist()
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $data['access_level'] = $this->accessLevel();
+
+        $userlist = new User_model();
+
+        $data['system_message'] = '';
+        $data['userlist'] = $userlist->getAllUsers();
+
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        if ($this->accessLevel() == -1)
+        {
+            $this->load->view('sidebar');
+        }
+        $this->load->view('userlevellist',$data);
+        $this->load->view('footer');
+    }
+
+    public function activateUser($uid,$access_level)
+    {
+        $Usermodel = new User_model();
+        $affected = $Usermodel->activateUser($uid,$access_level);
+
+        if($affected > 0)
+        {
+            $message = 'Activation success';
+        }
+        else
+        {
+            $message = 'Activation failed';
+        }
+        redirect('user/userlist?mes=' . $message);
     }
 }

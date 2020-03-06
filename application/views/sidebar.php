@@ -36,7 +36,7 @@
 					</ul>
 				</li>
 				<?php */ ?>
-<!--				--><?php //if($access == -1){ ?>
+<!--				--><?php if($access_level == -1){ ?>
 					<li class='has_sub'>
 						<a href='javascript:void(0);'>
 							<i class='icon-book-2'></i><span>Libraries</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
@@ -81,10 +81,11 @@
 						<li><a href="<?php echo base_url('user/userlist');?>"><span>Users</span></a></li>
 					</ul>
 				</li>
-				<li>
-
-					<a href="#"><i class='glyphicon glyphicon-refresh'></i><span > Change Password</span><span class="pull-right"></span></a>
-				</li>
+				<?php } ?>
+<!--				<li>-->
+<!---->
+<!--					<a href="#"><i class='glyphicon glyphicon-refresh'></i><span > Change Password</span><span class="pull-right"></span></a>-->
+<!--				</li>-->
 				<li>
 					<a href='javascript:void(0);' class="md-trigger" data-modal="logout-modal"><i class="fa fa-power-off text-red-1"></i><span > Logout</span><span class="pull-right"></span></a>
 				</li>

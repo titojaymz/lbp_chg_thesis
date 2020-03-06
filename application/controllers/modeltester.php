@@ -8,14 +8,14 @@ class modeltester extends CI_Controller
 {
     public function index()
     {
-        $modeltester = new Reports_model();
+        $modeltester = new User_model();
 
         /*$method_tester = $modeltester->addLandRegistration(
             '2018-01-01','AAASSSDD-12345','Josef Baldo',2,123,23,'TITLE-ASD-123',123,123,'LOT 12','commerial',
             1,2,3,123,123,123,'status1','itasd','2018-01-01','2018-01-01','2018-01-01','2018-01-01','2018-01-01',
             'SERIAL_NO','STATUS 2 na pwede inputan',123,123,123,123,123,123,123,99);*/
 
-        $method_tester = $modeltester->getLandClass();
+        $method_tester = $modeltester->activateUser(1,-1);
 
         $data = array(
             'modeltester' => $method_tester
