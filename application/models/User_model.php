@@ -62,6 +62,7 @@ class User_model extends CI_Model
     public function activateUser($uid,$userlevel)
     {
         $data = array(
+            'activated' => 1,
             'access_level' => $userlevel
         );
         $this->db->update('users',$data,array('uid'=>$uid));
