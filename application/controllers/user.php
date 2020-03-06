@@ -69,7 +69,7 @@ class user extends CI_Controller
                     $system_message = 'Login success!';
                     $data['system_message'] = $system_message;
 
-                    redirect('landregistration/index','location');
+                    redirect('dashboard','location');
                 }
                 else
                 {

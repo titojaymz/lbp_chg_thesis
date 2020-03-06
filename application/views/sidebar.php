@@ -19,7 +19,7 @@
 		<div id="sidebar-menu">
 			<ul>
 				<li>
-					<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
+					<a href="<?php echo base_url('dashboard') ?>"><i class='icon-home-3'></i><span>Dashboard</span></a>
 
 				</li>
 				<li>
