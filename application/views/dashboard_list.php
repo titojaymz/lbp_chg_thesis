@@ -55,7 +55,7 @@
                     <div class="widget-content">
                         <div class="table-responsive">
                             <?php foreach($landclass as $landclassData){ ?>
-                                <h2><strong>Approved claims - <?php echo $landclassData->land_class_code ?></strong></h2>
+                                <h2><strong>Land Classification Claims - <?php echo $landclassData->land_class_code ?></strong></h2>
                                 <?php foreach($apprv_claims as $i => $claimsData) { ?>
                                     <div class="table-responsive chart-container">
                                         <canvas id="myChart<?php echo $landclassData->land_class_code ?><?php echo $i ?>"></canvas>
@@ -110,7 +110,7 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['FB','Area','Amount','Cash','Bond'],
+                            labels: [ 'Area/Title','Area Acqrd','Area Apprvd','Easement','No. of FBs','No. of CFs','Amount','Cash','Bond','Total (Less: Releases)','Cash(Less: Releases)','Bond(Less: Releases)','Bond AO2','Total (Ending Balance)','Cash(Ending Balance)','Bond(Ending Balance)'],
                             datasets: [{
                                 label: '<?php echo $claimsData->status_name ?>',
                                 data: ['<?php echo $claimsData->total_fbs ?>','<?php echo $claimsData->AREA ?>','<?php echo $claimsData->amount ?>','<?php echo $claimsData->CASH ?>','<?php echo $claimsData->BOND ?>'],

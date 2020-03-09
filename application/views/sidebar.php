@@ -55,10 +55,10 @@
 								<a href="<?php echo base_url('position') ?>"><span>Position</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Division</span></a>
+							    <a href="<?php echo base_url('signatory') ?>"><span>Division</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Status</span></a>
+								<a href="<?php echo base_url('status') ?>"><span>Status</span></a>
 							</li>
 						</ul>
 					</li>
@@ -71,6 +71,13 @@
 					<ul>
 						<li><a href="<?php echo base_url('reports/generatemasterlist') ?>"><span>Masterlist</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Approved claims</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Status CF Recieved from DAR</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary of ApprvdClaim RA6657</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Reasons Returned to DAR</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary Land Valuation Accomp</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary Approved Claims</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Monthly Monitoring</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Received Claim Folders</span></a></li>						
 					</ul>
 				</li>
 				<li class='has_sub'>
@@ -79,6 +86,7 @@
 					</a>
 					<ul>
 						<li><a href="<?php echo base_url('user/userlist');?>"><span>Users</span></a></li>
+						<li><a href="<?php echo base_url('user/userlist');?>"><span>Audit Trails</span></a></li>
 					</ul>
 				</li>
 				<?php } ?>

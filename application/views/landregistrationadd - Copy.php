@@ -147,7 +147,24 @@
                             </select>
                         </div>
                     </div> <!-- ./Barangay -->
-                    
+                    <div class="form-group"> <!-- Total land value (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Total land value (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="js_total_landval_ajax" id="js_total_landval_ajax" >
+                            <input type="hidden" class="form-control"  placeholder="Total land value (Land valuation)" name="x_land_val_total_land_value" id="x_land_val_total_land_value" maxlength="11" value="<?php echo set_value('x_land_val_total_land_value'); ?>" required>
+                        </div>
+                    </div> <!-- ./Total land value (Land valuation) -->
+                    <div class="form-group"> <!-- Cash (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Cash (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Cash (Land valuation)" name="x_land_val_cash" id="x_land_val_cash" maxlength="11" value="<?php echo set_value('x_land_val_cash'); ?>" onchange="auto_x_land_val_total_land_value()" required>
+                        </div>
+                    </div> <!-- ./Cash (Land valuation) -->
+                    <div class="form-group"> <!-- Bond (Land valuation) -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond (Land valuation)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Bond (Land valuation)" name="x_land_val_bond" id="x_land_val_bond" maxlength="11" value="<?php echo set_value('x_land_val_bond'); ?>" onchange="auto_x_land_val_total_land_value()" required>
+                        </div>
                     </div> <!-- ./Bond (Land valuation) -->
                     <div class="form-group"> <!-- Status -->
                         <label for="input-text" class="col-sm-2 control-label">Status</label>
@@ -158,9 +175,94 @@
                                     <option value="<?php echo $statusList->status_id ?>"><?php echo $statusList->status_name ?></option>
                                 <?php endforeach ?>
                             </select>
-                        </div>		
-						
-                    </div> <!-- ./Bond (Land valuation) -->
+                        </div>					
+                    </div> <!-- ./Status -->
+                    <div class="form-group"> <!-- Pending division -->
+                        <label for="input-text" class="col-sm-2 control-label">Pending division</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Pending division" name="x_pending_division" id="x_pending_division" maxlength="50" value="<?php echo set_value('x_pending_division'); ?>" required>
+                        </div>
+                    </div> <!-- ./Pending division -->
+                    <div class="form-group"> <!-- Date of MOV/CVPF -->
+                        <label class="col-sm-2 control-label">Date of MOV/CVPF</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_mov_cvpf" id="x_date_mov_cvpf" value="<?php echo set_value('x_date_mov_cvpf'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of MOV/CVPF -->
+                    <div class="form-group"> <!-- Date of COD -->
+                        <label class="col-sm-2 control-label">Date of COD</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_cod" id="x_date_cod" value="<?php echo set_value('x_date_cod'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of COD -->
+                    <div class="form-group"> <!-- Date of last ammended -->
+                        <label class="col-sm-2 control-label">Date of last ammended</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_last_ammended" id="x_date_last_ammended" value="<?php echo set_value('x_date_last_ammended'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of last ammended -->
+                    <div class="form-group"> <!-- Date of Returned-->
+                        <label class="col-sm-2 control-label">Date of Returned</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_returned" id="x_date_returned" value="<?php echo set_value('x_date_returned'); ?>" required>
+                        </div>
+                    </div> <!-- ./Date of Returned -->
+                    <div class="form-group"> <!-- Bond serial number -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond serial number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Bond serial number" name="x_bond_serial_no" id="x_bond_serial_no" maxlength="50" value="<?php echo set_value('x_bond_serial_no'); ?>" required>
+                        </div>
+                    </div> <!-- ./Bond serial number -->
+                    <div class="form-group"> <!-- Status 2 -->
+                        <label for="input-text" class="col-sm-2 control-label">Status/Remarks</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Status" name="x_status_2" id="x_status_2" maxlength="50" value="<?php echo set_value('x_status_2'); ?>" required>
+                        </div>
+                    </div> <!-- ./Status 2 -->
+                    <div class="form-group"> <!-- Total (Less: Releases) -->
+                        <label for="input-text" class="col-sm-2 control-label">Total (Less: Releases)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="js_total_less_rel" id="js_total_less_rel" >
+                            <input type="hidden" class="form-control"  placeholder="Total (Less: Releases)" name="x_less_rel_total" id="x_less_rel_total" maxlength="11" value="<?php echo set_value('x_less_rel_total'); ?>" required>
+                        </div>
+                    </div> <!-- ./Total (Less: Releases) -->
+                    <div class="form-group"> <!-- Cash (Less: Releases) -->
+                        <label for="input-text" class="col-sm-2 control-label">Cash (Less: Releases)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Cash (Less: Releases)" name="x_less_rel_cash" id="x_less_rel_cash" maxlength="11" value="<?php echo set_value('x_less_rel_cash'); ?>" onchange="auto_x_total_less_release()" required>
+                        </div>
+                    </div> <!-- ./Cash (Less: Releases) -->
+                    <div class="form-group"> <!-- Bond (Less: Releases) -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond (Less: Releases)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Bond (Less: Releases)" name="x_less_rel_bond" id="x_less_rel_bond" maxlength="11" value="<?php echo set_value('x_less_rel_bond'); ?>" onchange="auto_x_total_less_release()" required>
+                        </div>
+                    </div> <!-- ./Bond (Less: Releases) -->
+                    <div class="form-group"> <!-- Bond AO2 (Less: Releases) -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond AO2 (Less: Releases)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Bond AO2 (Less: Releases)" name="x_less_rel_bond_ao2" id="x_less_rel_bond_ao2" maxlength="11" value="<?php echo set_value('x_less_rel_bond_ao2'); ?>" onchange="auto_x_total_less_release()" required>
+                        </div>
+                    </div> <!-- ./Bond AO2 (Less: Releases) -->
+                    <div class="form-group"> <!-- Total (Ending balances) -->
+                        <label for="input-text" class="col-sm-2 control-label">Total (Ending balances)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="js_total_ending_balances" id="js_total_ending_balances" >
+                            <input type="hidden" class="form-control"  placeholder="Total (Ending balances)" name="x_end_bal_total" id="x_end_bal_total" maxlength="11" value="<?php echo set_value('x_end_bal_total'); ?>" required>
+                        </div>
+                    </div> <!-- ./Total (Ending balances) -->
+                    <div class="form-group"> <!-- Cash (Ending balances) -->
+                        <label for="input-text" class="col-sm-2 control-label">Cash (Ending balances)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Cash (Ending balances)" name="x_end_bal_cash" id="x_end_bal_cash" maxlength="11" value="<?php echo set_value('x_end_bal_cash'); ?>" onchange="auto_x_total_ending_balances()" required>
+                        </div>
+                    </div> <!-- ./Cash (Ending balances) -->
+                    <div class="form-group"> <!-- Bond (Ending balances) -->
+                        <label for="input-text" class="col-sm-2 control-label">Bond (Ending balances)</label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" class="form-control"  placeholder="Bond (Ending balances)" name="x_end_bal_bond" id="x_end_bal_bond" maxlength="11" value="<?php echo set_value('x_end_bal_bond'); ?>" onchange="auto_x_total_ending_balances()" required>
+                        </div>
+                    </div> <!-- ./Bond (Ending balances) -->
                     <div class="form-group"> <!-- Land Classification -->
                         <label for="input-text" class="col-sm-2 control-label">Land Classification</label>
                         <div class="col-sm-10">
