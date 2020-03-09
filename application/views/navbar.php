@@ -21,7 +21,7 @@
 <div id="wrapper">
 	<!-- Top Bar Start gset_fullname -->
 	<div class="topbar">
-		<?php if ($access_level == -1){ ?>
+		<?php // if ($access_level == -1){ ?>
 		<div class="topbar-left">
 			<div class="logo">
 <!--				<a href="" class="rounded-image profile-image"><img src="--><?php //echo base_url('/images/dswd.jpg');?><!--"></a>-->
@@ -31,7 +31,7 @@
 				<i class="fa fa-bars"></i>
 			</button>
 		</div>
-		<?php } ?>
+		<?php /* } */ ?>
 		<!-- Button mobile view to collapse sidebar menu -->
 		<div class="navbar navbar-default" role="navigation">
 			<div class="container">

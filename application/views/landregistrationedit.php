@@ -10,12 +10,12 @@
     <?php } ?>
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url('landregistration/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li><a href="<?php echo base_url('landregistration/index'); ?>">Land registration list</a></li>
-        <li><strong>Land registration update record</strong></li>
+        <li><a href="<?php echo base_url('landregistration/index'); ?>">Landowners' Claim Folders list</a></li>
+        <li><strong>Landowners' Claim Folders update record</strong></li>
     </ul>
     <div class="content">
         <div class="page-heading">
-            <h1><i class='icon-cogs'></i>Land registration records</h1>
+            <h1><i class='icon-cogs'></i>Landowners' Claim Folders Records</h1>
         </div>
 
         <?php if (validation_errors() <> ''){ ?>
@@ -50,55 +50,61 @@
                     <div class="form-group"> <!-- Date Received from DAR -->
                         <label for="input-text" class="col-sm-2 control-label">Date Received from DAR</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_recvd_dar" id="x_date_recvd_dar" value="<?php echo $landregistrationdata['date_recvd_dar'] ?>">
+                            <input type="text" class="form-control datepicker-input" data-mask="9999-99-99" placeholder="yyyy-mm-dd" name="x_date_recvd_dar" id="x_date_recvd_dar" value="<?php echo $landregistrationdata['date_recvd_dar'] ?>" required>
                         </div>
                     </div> <!-- ./Date Received from DAR -->
                     <div class="form-group"> <!-- Claim folder number -->
                         <label for="input-text" class="col-sm-2 control-label">Claim folder number</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Claim folder number" name="x_claim_fld_no" id="x_claim_fld_no" maxlength="50" value="<?php echo $landregistrationdata['claim_fld_no'] ?>">
+                            <input type="text" class="form-control"  placeholder="Claim folder number" name="x_claim_fld_no" id="x_claim_fld_no" maxlength="50" value="<?php echo $landregistrationdata['claim_fld_no'] ?>" required>
                         </div>
                     </div> <!-- ./Claim folder number -->
                     <div class="form-group"> <!-- Name of land owner -->
                         <label for="input-text" class="col-sm-2 control-label">Name of land owner</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Name of land owner" name="x_name_land_owner" id="x_name_land_owner" maxlength="100" value="<?php echo $landregistrationdata['name_land_owner'] ?>">
+                            <input type="text" class="form-control"  placeholder="Name of land owner" name="x_name_land_owner" id="x_name_land_owner" maxlength="100" value="<?php echo $landregistrationdata['name_land_owner'] ?>" required>
+                        </div>	
+					</div> <!-- ./Claim folder number -->	
+                    <div class="form-group"> <!-- Name of Processor-->
+                        <label for="input-text" class="col-sm-2 control-label">Name of Processor</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="Name of Processor" name="x_Processor_name" id="x_Processor_name" maxlength="100" value="<?php echo $landregistrationdata['Processor_name'] ?>" required>
                         </div>
                     </div> <!-- ./Name of land owner -->
                     <div class="form-group"> <!-- No. of FBs -->
                         <label for="input-text" class="col-sm-2 control-label">No. of FBs</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control" placeholder="No. of FBs" name="x_no_fbs" id="x_no_fbs" maxlength="11" value="<?php echo $landregistrationdata['no_fbs'] ?>">
+                            <input type="number" step="any" class="form-control" placeholder="No. of FBs" name="x_no_fbs" id="x_no_fbs" maxlength="11" value="<?php echo $landregistrationdata['no_fbs'] ?>" required>
                         </div>
                     </div> <!-- ./No. of FBs -->
                     <div class="form-group"> <!-- Area per title -->
                         <label for="input-text" class="col-sm-2 control-label">Area per title</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Area per title" name="x_area_per_title" id="x_area_per_title" maxlength="11" value="<?php echo $landregistrationdata['area_per_title'] ?>">
+                            <input type="number" step="any" class="form-control"  placeholder="Area per title" name="x_area_per_title" id="x_area_per_title" maxlength="11" value="<?php echo $landregistrationdata['area_per_title'] ?>" required>
                         </div>
                     </div> <!-- ./Area per title -->
                     <div class="form-group"> <!-- Area acquired -->
                         <label for="input-text" class="col-sm-2 control-label">Area acquired</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Area acquired" name="x_area_acqrd" id="x_area_acqrd" maxlength="11" value="<?php echo $landregistrationdata['area_acqrd'] ?>">
+                            <input type="number" step="any" class="form-control"  placeholder="Area acquired" name="x_area_acqrd" id="x_area_acqrd" maxlength="11" value="<?php echo $landregistrationdata['area_acqrd'] ?>" required>
                         </div>
                     </div> <!-- ./Area acquired -->
                     <div class="form-group"> <!-- Title number -->
                         <label for="input-text" class="col-sm-2 control-label">Title number</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Title number" name="x_title_no" id="x_title_no" maxlength="50" value="<?php echo $landregistrationdata['title_no'] ?>">
+                            <input type="text" class="form-control"  placeholder="Title number" name="x_title_no" id="x_title_no" maxlength="50" value="<?php echo $landregistrationdata['title_no'] ?>" required>
                         </div>
                     </div> <!-- ./Title number -->
                     <div class="form-group"> <!-- Area approved -->
                         <label for="input-text" class="col-sm-2 control-label">Area approved</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Area approved" name="x_area_aprvd" id="x_area_aprvd" maxlength="11" value="<?php echo $landregistrationdata['area_aprvd'] ?>" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Area approved" name="x_area_aprvd" id="x_area_aprvd" maxlength="11" value="<?php echo $landregistrationdata['area_aprvd'] ?>" required>
                         </div>
                     </div> <!-- ./Area approved -->
                     <div class="form-group"> <!-- Easement -->
                         <label for="input-text" class="col-sm-2 control-label">Easement</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Easement" name="x_easement" id="x_easement" maxlength="11" value="<?php echo $landregistrationdata['easementt'] ?>" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Easement" name="x_easement" id="x_easement" maxlength="11" value="<?php echo $landregistrationdata['easementt'] ?>" required>
                         </div>
                     </div> <!-- ./Easement -->
                     <div class="form-group"> <!-- Lot number -->
@@ -151,20 +157,20 @@
                     <div class="form-group"> <!-- Total land value (Land valuation) -->
                         <label for="input-text" class="col-sm-2 control-label">Total land value (Land valuation)</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="js_total_landval_ajax" id="js_total_landval_ajax" value="<?php echo $landregistrationdata['land_val_total_land_value'] ?>" disabled>
+                            <input type="text" class="form-control" name="js_total_landval_ajax" id="js_total_landval_ajax" value="<?php echo $landregistrationdata['land_val_total_land_value'] ?>" >
                             <input type="hidden" class="form-control"  placeholder="Total land value (Land valuation)" name="x_land_val_total_land_value" id="x_land_val_total_land_value" maxlength="11" value="<?php echo $landregistrationdata['land_val_total_land_value'] ?>" required>
                         </div>
                     </div> <!-- ./Total land value (Land valuation) -->
                     <div class="form-group"> <!-- Cash (Land valuation) -->
                         <label for="input-text" class="col-sm-2 control-label">Cash (Land valuation)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Cash (Land valuation)" name="x_land_val_cash" id="x_land_val_cash" maxlength="11" value="<?php echo $landregistrationdata['land_val_cash'] ?>" onchange="auto_x_land_val_total_land_value()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Cash (Land valuation)" name="x_land_val_cash" id="x_land_val_cash" maxlength="11" value="<?php echo $landregistrationdata['land_val_cash'] ?>" onchange="auto_x_land_val_total_land_value()" required>
                         </div>
                     </div> <!-- ./Cash (Land valuation) -->
                     <div class="form-group"> <!-- Bond (Land valuation) -->
                         <label for="input-text" class="col-sm-2 control-label">Bond (Land valuation)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Bond (Land valuation)" name="x_land_val_bond" id="x_land_val_bond" maxlength="11" value="<?php echo $landregistrationdata['land_val_bond'] ?>" onchange="auto_x_land_val_total_land_value()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Bond (Land valuation)" name="x_land_val_bond" id="x_land_val_bond" maxlength="11" value="<?php echo $landregistrationdata['land_val_bond'] ?>" onchange="auto_x_land_val_total_land_value()" required>
                         </div>
                     </div> <!-- ./Bond (Land valuation) -->
                     <div class="form-group"> <!-- Status -->
@@ -211,57 +217,57 @@
                     <div class="form-group"> <!-- Bond serial number -->
                         <label for="input-text" class="col-sm-2 control-label">Bond serial number</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Bond serial number" name="x_bond_serial_no" id="x_bond_serial_no" maxlength="50" value="<?php echo $landregistrationdata['bond_serial_no'] ?>">
+                            <input type="text" class="form-control"  placeholder="Bond serial number" name="x_bond_serial_no" id="x_bond_serial_no" maxlength="50" value="<?php echo $landregistrationdata['bond_serial_no'] ?>" required>
                         </div>
                     </div> <!-- ./Bond serial number -->
                     <div class="form-group"> <!-- Status 2 -->
                         <label for="input-text" class="col-sm-2 control-label">Status/Remarks</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Status" name="x_status_2" id="x_status_2" maxlength="50" value="<?php echo $landregistrationdata['status2'] ?>">
+                            <input type="text" class="form-control"  placeholder="Status" name="x_status_2" id="x_status_2" maxlength="50" value="<?php echo $landregistrationdata['status2'] ?>" required>
                         </div>
                     </div> <!-- ./Status 2 -->
                     <div class="form-group"> <!-- Total (Less: Releases) -->
                         <label for="input-text" class="col-sm-2 control-label">Total (Less: Releases)</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="js_total_less_rel" id="js_total_less_rel" value="<?php echo $landregistrationdata['less_rel_total'] ?>" disabled>
+                            <input type="text" class="form-control" name="js_total_less_rel" id="js_total_less_rel" value="<?php echo $landregistrationdata['less_rel_total'] ?>" >
                             <input type="hidden" class="form-control"  placeholder="Total (Less: Releases)" name="x_less_rel_total" id="x_less_rel_total" maxlength="11" value="<?php echo $landregistrationdata['less_rel_total'] ?>" required>
                         </div>
                     </div> <!-- ./Total (Less: Releases) -->
                     <div class="form-group"> <!-- Cash (Less: Releases) -->
                         <label for="input-text" class="col-sm-2 control-label">Cash (Less: Releases)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Cash (Less: Releases)" name="x_less_rel_cash" id="x_less_rel_cash" maxlength="11" value="<?php echo $landregistrationdata['less_rel_cash'] ?>" onchange="auto_x_total_less_release()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Cash (Less: Releases)" name="x_less_rel_cash" id="x_less_rel_cash" maxlength="11" value="<?php echo $landregistrationdata['less_rel_cash'] ?>" onchange="auto_x_total_less_release()" required>
                         </div>
                     </div> <!-- ./Cash (Less: Releases) -->
                     <div class="form-group"> <!-- Bond (Less: Releases) -->
                         <label for="input-text" class="col-sm-2 control-label">Bond (Less: Releases)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Bond (Less: Releases)" name="x_less_rel_bond" id="x_less_rel_bond" maxlength="11" value="<?php echo $landregistrationdata['less_rel_bond'] ?>" onchange="auto_x_total_less_release()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Bond (Less: Releases)" name="x_less_rel_bond" id="x_less_rel_bond" maxlength="11" value="<?php echo $landregistrationdata['less_rel_bond'] ?>" onchange="auto_x_total_less_release()" required>
                         </div>
                     </div> <!-- ./Bond (Less: Releases) -->
                     <div class="form-group"> <!-- Bond AO2 (Less: Releases) -->
                         <label for="input-text" class="col-sm-2 control-label">Bond AO2 (Less: Releases)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Bond AO2 (Less: Releases)" name="x_less_rel_bond_ao2" id="x_less_rel_bond_ao2" maxlength="11" value="<?php echo $landregistrationdata['less_rel_bond_ao2'] ?>" onchange="auto_x_total_less_release()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Bond AO2 (Less: Releases)" name="x_less_rel_bond_ao2" id="x_less_rel_bond_ao2" maxlength="11" value="<?php echo $landregistrationdata['less_rel_bond_ao2'] ?>" onchange="auto_x_total_less_release()" required>
                         </div>
                     </div> <!-- ./Bond AO2 (Less: Releases) -->
                     <div class="form-group"> <!-- Total (Ending balances) -->
                         <label for="input-text" class="col-sm-2 control-label">Total (Ending balances)</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="js_total_ending_balances" id="js_total_ending_balances" value="<?php echo $landregistrationdata['end_bal_total'] ?>" disabled>
+                            <input type="text" class="form-control" name="js_total_ending_balances" id="js_total_ending_balances" value="<?php echo $landregistrationdata['end_bal_total'] ?>" >
                             <input type="hidden" class="form-control"  placeholder="Total (Ending balances)" name="x_end_bal_total" id="x_end_bal_total" maxlength="11" value="<?php echo $landregistrationdata['end_bal_total'] ?>" required>
                         </div>
                     </div> <!-- ./Total (Ending balances) -->
                     <div class="form-group"> <!-- Cash (Ending balances) -->
                         <label for="input-text" class="col-sm-2 control-label">Cash (Ending balances)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Cash (Ending balances)" name="x_end_bal_cash" id="x_end_bal_cash" maxlength="11" value="<?php echo $landregistrationdata['end_bal_cash'] ?>" onchange="auto_x_total_ending_balances()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Cash (Ending balances)" name="x_end_bal_cash" id="x_end_bal_cash" maxlength="11" value="<?php echo $landregistrationdata['end_bal_cash'] ?>" onchange="auto_x_total_ending_balances()" required>
                         </div>
                     </div> <!-- ./Cash (Ending balances) -->
                     <div class="form-group"> <!-- Bond (Ending balances) -->
                         <label for="input-text" class="col-sm-2 control-label">Bond (Ending balances)</label>
                         <div class="col-sm-10">
-                            <input type="number" min="1" max="99999999999" step="any" class="form-control"  placeholder="Bond (Ending balances)" name="x_end_bal_bond" id="x_end_bal_bond" maxlength="11" value="<?php echo $landregistrationdata['end_bal_bond'] ?>" onchange="auto_x_total_ending_balances()" required>
+                            <input type="number" step="any" class="form-control"  placeholder="Bond (Ending balances)" name="x_end_bal_bond" id="x_end_bal_bond" maxlength="11" value="<?php echo $landregistrationdata['end_bal_bond'] ?>" onchange="auto_x_total_ending_balances()" required>
                         </div>
                     </div> <!-- ./Bond (Ending balances) -->
                     <div class="form-group"> <!-- Land Classification -->

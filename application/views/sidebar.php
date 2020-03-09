@@ -19,7 +19,7 @@
 		<div id="sidebar-menu">
 			<ul>
 				<li>
-					<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
+					<a href="<?php echo base_url('dashboard') ?>"><i class='icon-home-3'></i><span>Dashboard</span></a>
 
 				</li>
 				<li>
@@ -36,7 +36,7 @@
 					</ul>
 				</li>
 				<?php */ ?>
-<!--				--><?php //if($access == -1){ ?>
+<!--				--><?php if($access_level == -1){ ?>
 					<li class='has_sub'>
 						<a href='javascript:void(0);'>
 							<i class='icon-book-2'></i><span>Libraries</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
@@ -55,10 +55,10 @@
 								<a href="<?php echo base_url('position') ?>"><span>Position</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Division</span></a>
+							    <a href="<?php echo base_url('signatory') ?>"><span>Division</span></a>
 							</li>
 							<li>
-								<a href="#"><span>Status</span></a>
+								<a href="<?php echo base_url('status') ?>"><span>Status</span></a>
 							</li>
 						</ul>
 					</li>
@@ -71,6 +71,13 @@
 					<ul>
 						<li><a href="<?php echo base_url('reports/generatemasterlist') ?>"><span>Masterlist</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Approved claims</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Status CF Recieved from DAR</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary of ApprvdClaim RA6657</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Reasons Returned to DAR</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary Land Valuation Accomp</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary Approved Claims</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Monthly Monitoring</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Received Claim Folders</span></a></li>						
 					</ul>
 				</li>
 				<li class='has_sub'>
@@ -79,12 +86,14 @@
 					</a>
 					<ul>
 						<li><a href="<?php echo base_url('user/userlist');?>"><span>Users</span></a></li>
+						<li><a href="<?php echo base_url('user/userlist');?>"><span>Audit Trails</span></a></li>
 					</ul>
 				</li>
-				<li>
-
-					<a href="#"><i class='glyphicon glyphicon-refresh'></i><span > Change Password</span><span class="pull-right"></span></a>
-				</li>
+				<?php } ?>
+<!--				<li>-->
+<!---->
+<!--					<a href="#"><i class='glyphicon glyphicon-refresh'></i><span > Change Password</span><span class="pull-right"></span></a>-->
+<!--				</li>-->
 				<li>
 					<a href='javascript:void(0);' class="md-trigger" data-modal="logout-modal"><i class="fa fa-power-off text-red-1"></i><span > Logout</span><span class="pull-right"></span></a>
 				</li>

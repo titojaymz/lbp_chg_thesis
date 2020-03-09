@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-cogs overlay"></i>
-                        <input type="text" class="form-control text-input" placeholder="Middle name" name="x_middlename" id="x_middlename" required>
+                        <input type="text" class="form-control text-input" placeholder="Middle name" name="x_middlename" id="x_middlename" >
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-cogs overlay"></i>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-cogs overlay"></i>
-                        <input type="text" class="form-control text-input" placeholder="Extension name" name="x_extname" id="x_extname" required>
+                        <input type="text" class="form-control text-input" placeholder="Extension name" name="x_extname" id="x_extname" >
                     </div>
                     <div class="form-group login-input">
                         <i class="fa fa-key overlay"></i>

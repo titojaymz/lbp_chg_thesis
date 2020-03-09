@@ -11,7 +11,7 @@
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url('landregistration/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
         <li><a href="<?php echo base_url('landregistration/index'); ?>">Land registration list</a></li>
-        <li><strong>Land registration new record</strong></li>
+        <li><strong>Position new record</strong></li>
     </ul>
     <div class="content">
         <div class="page-heading">

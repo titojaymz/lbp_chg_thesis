@@ -8,7 +8,7 @@
 <div class="content-page">
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url('landregistration/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li><strong>Land registration list</strong></li>
+        <li><strong>Claim Folders list</strong></li>
     </ul>
     <div class="content">
         <div class="page-heading">
@@ -42,7 +42,7 @@
                 --><?php /*} */?>
                 <div class="widget">
                     <div class="widget-header transparent">
-                        <h2><strong>Land registration list</strong></h2>
+                        <h2><strong>Claim Folders list</strong></h2>
                         <div class="additional-btn">
                             <?php /*
                             <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>

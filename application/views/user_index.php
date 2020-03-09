@@ -66,5 +66,5 @@ if (!$this->session->userdata('user_data'))
     </div>
 </div>
 <?php } else { ?>
-    <?php redirect('public_access','location') ?>
+    <?php redirect('dashboard','location') ?>
 <?php } ?>

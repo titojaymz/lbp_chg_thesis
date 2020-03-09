@@ -7,12 +7,12 @@
 ?>
 <div class="content-page">
     <ul class="breadcrumb">
-        <li><a href="<?php echo base_url('landregistration/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li><strong>Positions list</strong></li>
+        <li><a href="<?php echo base_url('status/index'); ?>"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li><strong><?php echo $page_title?> list</strong></li>
     </ul>
     <div class="content">
         <div class="page-heading">
-            <h1><i class='icon-address-book-alt'></i>Positions</h1>
+            <h1><i class='icon-address-book-alt'></i><?php echo $page_title?></h1>
         </div>
 
         <?php if ($system_message <> ''){ ?>
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('position/positionadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('status/statusadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
                     <!-- <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 --><?php /*} */?>
                 <div class="widget">
                     <div class="widget-header transparent">
-                        <h2><strong>Position list</strong></h2>
+                        <h2><strong><?php echo $page_title?> list</strong></h2>
                         <div class="additional-btn">
                             <?php /*
                             <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
@@ -58,9 +58,8 @@
                                 <thead>
                                 <tr>
                                     <th data-column-id="##" data-title="commands" data-formatter="linkedit"></th>
-                                    <th data-column-id="position_id">ID</th>
-                                    <th data-column-id="position_code">Code</th>
-                                    <th data-column-id="position_name">Name</th>
+                                    <th data-column-id="status_id">ID</th>                                   
+                                    <th data-column-id="status_name">Name</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -72,7 +71,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('landregistration/landregistrationadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('status/landclassnadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
                     <!--<a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
             </div>
@@ -87,14 +86,14 @@
                 rowSelect: true,
                 selection: false,
                 sorting: true,
-                url: "<?php echo base_url('position/renderpositionlist'); ?>",
+                url: "<?php echo base_url('status/renderlandclasslist'); ?>",
                 requestHandler: function (request) {
                     return request;
                 },
                 formatters: {
                     "linkedit" : function(column, row) {
                         //return "<a class='btn btn-outline-info btn-sm' href='#'><span> EDIT </span></a>";
-                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('position/positionedit/'); ?>/" + row.position_id + "'><span> EDIT </span></a>";
+                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('status/landclassedit/'); ?>/" + row.land_class_id + "'><span> EDIT </span></a>";
                     }
                     // "linksub" : function(column, row) {
                     // return "<a class='btn btn-outline-success btn-sm' href='<?php echo base_url(''); ?>/" + row.allotment_class_id + "'><span> PRODUCTION PLAN </span></a>";

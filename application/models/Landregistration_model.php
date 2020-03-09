@@ -78,7 +78,7 @@ class Landregistration_model extends CI_Model
         return array($query->result(),$query1->num_rows());
     }
 
-    public function addLandRegistration($date_recvd_dar,$claim_fld_no,$name_land_owner,$no_fbs,
+    public function addLandRegistration($date_recvd_dar,$claim_fld_no,$name_land_owner,$Processor_name,$no_fbs,
                     $area_per_title,$area_acqrd,$title_no,$area_aprvd,$easementt,$lot_no,
                     $land_use,$region_id,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
                     $land_val_cash,$land_val_bond,$status,$pending_division,$date_mov_cvpf,
@@ -89,7 +89,7 @@ class Landregistration_model extends CI_Model
         $this->db->trans_begin();
 
         $this->db->query('INSERT INTO tbl_land_reg
-                      (date_recvd_dar, claim_fld_no, name_land_owner,
+                      (date_recvd_dar, claim_fld_no, name_land_owner, Processor_name,
                       no_fbs, area_per_title, area_acqrd, title_no,
                       area_aprvd, easementt, lot_no, land_use, region_id, prov_id,
                       muni_city_id, brgy_id, land_val_total_land_value,
@@ -103,6 +103,7 @@ class Landregistration_model extends CI_Model
                 "'.$date_recvd_dar.'",
                 "'.$claim_fld_no.'",
                 "'.$name_land_owner.'",
+				"'.$Processor_name.'",
                 "'.$no_fbs.'",
                 "'.$area_per_title.'",
                 "'.$area_acqrd.'",
@@ -179,7 +180,7 @@ class Landregistration_model extends CI_Model
         return $query->row_array();
     }
 
-    public function updateLandRegistration($id,$date_recvd_dar,$claim_fld_no,$name_land_owner,$no_fbs,
+    public function updateLandRegistration($id,$date_recvd_dar,$claim_fld_no,$name_land_owner, $Processor_name, $no_fbs,
                                         $area_per_title,$area_acqrd,$title_no,$area_aprvd,$easementt,$lot_no,
                                         $land_use,$region_id,$prov_id,$muni_city_id,$brgy_id,$land_val_total_land_value,
                                         $land_val_cash,$land_val_bond,$status,$pending_division,$date_mov_cvpf,
@@ -195,6 +196,7 @@ class Landregistration_model extends CI_Model
             date_recvd_dar = "'.$date_recvd_dar.'",
             claim_fld_no = "'.$claim_fld_no.'",
             name_land_owner = "'.$name_land_owner.'",
+			Processor_name = "'.$Processor_name.'",
             no_fbs = "'.$no_fbs.'",
             area_per_title = "'.$area_per_title.'",
             area_acqrd = "'.$area_acqrd.'",
