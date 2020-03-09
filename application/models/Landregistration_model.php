@@ -50,13 +50,15 @@ class Landregistration_model extends CI_Model
                   b.prov_name as prov_name,
                   c.muni_city_name as muni_city_name,
                   d.brgy_name as brgy_name,
-                  f.land_class_name
+                  f.land_class_name,
+                  g.status_name
                   FROM `tbl_land_reg` as a
                   LEFT JOIN lib_provinces as b on a.prov_id=b.prov_id
                   LEFT JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
                   LEFT JOIN lib_barangay as d on a.brgy_id=d.brgy_id
                   LEFT JOIN lib_regions e on a.region_id=e.region_id
                   LEFT JOIN lib_land_class as f on a.land_class_id=f.land_class_id
+                  LEFT JOIN lib_status as g on a.status_id=g.status_id
                   Where $where $limit";
         $sql1 = "SELECT
                   a.*,
@@ -70,7 +72,9 @@ class Landregistration_model extends CI_Model
                   LEFT JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
                   LEFT JOIN lib_barangay as d on a.brgy_id=d.brgy_id
                   LEFT JOIN lib_regions e on a.region_id=e.region_id
-                  LEFT JOIN lib_land_class as f on a.land_class_id=f.land_class_id Where $where";
+                  LEFT JOIN lib_land_class as f on a.land_class_id=f.land_class_id
+                  LEFT JOIN lib_status as g on a.status_id=g.status_id
+                  Where $where";
         //echo $sql;
         $query = $this->db->query($sql);
         $query1 = $this->db->query($sql1);
