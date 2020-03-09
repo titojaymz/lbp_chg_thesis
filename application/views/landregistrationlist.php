@@ -94,7 +94,7 @@
 									   <th data-column-id="date_created">Date Created</th>
 									   <th data-column-id="date_modified">Date Modified</th>
 									   <th data-column-id="modified_by">Modified by</th>
-									   <th data-column-id="status_id">Claim Folder STATUS</th>
+									   <th data-column-id="status_name">Claim Folder STATUS</th>
                                 </tr>
                                 </thead>
                             </table>
