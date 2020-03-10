@@ -6,6 +6,11 @@
  */
 class Reports extends CI_Controller
 {
+    public function title()
+    {
+        return 'Reports';
+    }
+
     public function accessLevel()
     {
         if (!$this->session->userdata('access_level'))
@@ -237,11 +242,36 @@ class Reports extends CI_Controller
 
     public function approvedClaims()
     {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
         $reports = new Reports_model();
         $data = array(
             'landclass' => $reports->getLandClass(),
             'apprv_claims' => $reports->getApproveClaims(1)
         );
         $this->load->view('approve_claims',$data);
+    }
+
+    public function approvedClaimsview()
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $page_type = 'approved claims';
+        $reports = new Reports_model();
+        $data = array(
+            'landclass' => $reports->getLandClass(),
+            'apprv_claims' => $reports->getApproveClaims(1),
+            'page_title' => $this->title() . ' - ' . $page_type,
+            'access_level' => $this->accessLevel()
+        );
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('sidebar');
+        $this->load->view('approveclaim_list.php',$data);
+        $this->load->view('footer');
     }
 }

@@ -70,7 +70,7 @@
 					</a>
 					<ul>
 						<li><a href="<?php echo base_url('reports/generatemasterlist') ?>"><span>Masterlist</span></a></li>
-						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Approved claims</span></a></li>
+						<li><a href="<?php echo base_url('reports/approvedClaimsview') ?>"><span>Approved claims</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Status CF Recieved from DAR</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary of ApprvdClaim RA6657</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Reasons Returned to DAR</span></a></li>
