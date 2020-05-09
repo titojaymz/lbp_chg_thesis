@@ -41,30 +41,28 @@
                         <?php /*print_r($landRegList) */?>
                     </pre>
                 --><?php /*} */?>
-                <div class="widget">
-                    <div class="widget-header transparent">
-                        <h2><strong><?php echo $page_title?></strong></h2>
-                        <div class="additional-btn">
-                            <?php /*
+                <?php foreach($landclass as $landclassData){ ?>
+                    <h3><strong>Land Classification Claims - <?php echo $landclassData->land_class_code ?></strong></h3>
+                    <?php foreach($apprv_claims as $i => $claimsData) { ?>
+                        <div class="widget">
+                            <div class="widget-header transparent">
+                                <h1><strong><?php echo $claimsData->status_name ?></strong></h1>
+                                <div class="additional-btn">
+                                    <?php /*
                             <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
                             <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
                             */ ?>
-                            <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="widget-content" style="display: none;"> <?php // May 9, 2020 08:41 Manoy Carrie, burahin mo na sana su style="display: none;" kung muya mong naka open sinda, pero ok na ini e di good :D ?>
+                                <div class="table-responsive chart-container">
+                                    <canvas id="myChart<?php echo $landclassData->land_class_code ?><?php echo $i ?>"></canvas>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="widget-content">
-                        <div class="table-responsive">
-                            <?php foreach($landclass as $landclassData){ ?>
-                                <h2><strong>Land Classification Claims - <?php echo $landclassData->land_class_code ?></strong></h2>
-                                <?php foreach($apprv_claims as $i => $claimsData) { ?>
-                                    <div class="table-responsive chart-container">
-                                        <canvas id="myChart<?php echo $landclassData->land_class_code ?><?php echo $i ?>"></canvas>
-                                    </div>
-                                <?php } ?>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
+                    <?php } ?>
+                <?php } ?>
             </div>
         </div>
         <div class="row">
@@ -112,7 +110,7 @@
                         data: {
                             labels: [ 'Area/Title','Area Acqrd','Area Apprvd','Easement','No. of FBs','No. of CFs','Amount','Cash','Bond','Total (Less: Releases)','Cash(Less: Releases)','Bond(Less: Releases)','Bond AO2','Total (Ending Balance)','Cash(Ending Balance)','Bond(Ending Balance)'],
                             datasets: [{
-                                label: '<?php echo $claimsData->status_name ?>',
+                                label: 'No of <?php echo substr($claimsData->status_name,4) ?>',
                                 data: ['<?php echo $claimsData->total_fbs ?>','<?php echo $claimsData->AREA ?>','<?php echo $claimsData->amount ?>','<?php echo $claimsData->CASH ?>','<?php echo $claimsData->BOND ?>'],
                                 backgroundColor: [
                                     'rgba(101, 189, 183, 1)',
