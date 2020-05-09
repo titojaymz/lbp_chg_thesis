@@ -46,7 +46,7 @@
                     <?php foreach($apprv_claims as $i => $claimsData) { ?>
                         <div class="widget">
                             <div class="widget-header transparent">
-                                <h1><strong><?php echo $claimsData->status_name ?></strong></h1>
+                                <h1><strong><?php echo substr($claimsData->status_name,4) ?></strong></h1>
                                 <div class="additional-btn">
                                     <?php /*
                             <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
@@ -55,7 +55,7 @@
                                     <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
                                 </div>
                             </div>
-                            <div class="widget-content" style="display: none;"> <?php // May 9, 2020 08:41 Manoy Carrie, burahin mo na sana su style="display: none;" kung muya mong naka open sinda, pero ok na ini e di good :D ?>
+                            <div class="widget-content"> <?php // May 9, 2020 08:41 Manoy Carrie, burahin mo na sana su style="display: none;" kung muya mong naka open sinda, pero ok na ini e di good :D ?>
                                 <div class="table-responsive chart-container">
                                     <canvas id="myChart<?php echo $landclassData->land_class_code ?><?php echo $i ?>"></canvas>
                                 </div>
