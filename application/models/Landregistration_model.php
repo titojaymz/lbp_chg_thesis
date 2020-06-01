@@ -6,10 +6,10 @@
  */
 class Landregistration_model extends CI_Model
 {
-    public function getAllLandRegistration()
+    public function getAllLandRegistration($current_user_region)
     {
         $limit_lower = "";
-        $where =" a.DELETED=0 ";
+        $where =" a.region_id=" . $current_user_region . " AND a.DELETED=0 ";
         $rows=25;
         $current=1;
         $limit_l=($current * $rows) - ($rows);
@@ -22,7 +22,7 @@ class Landregistration_model extends CI_Model
         if (isset($_REQUEST['searchPhrase']) )
         {
             $search=trim($_REQUEST['searchPhrase']);
-            $where.= " and ( a.name_land_owner LIKE '%".$search."%' or a.title_no LIKE '%".$search."%' or f.land_class_name LIKE '%".$search."%' ) ";
+            $where.= " and ( a.title_no LIKE '%".$search."%' or f.land_class_name LIKE '%".$search."%' ) ";
             // $this->db->like('access_list_id', $search);
             // $this->db->like('access_list_name', $search);
         }

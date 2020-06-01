@@ -147,8 +147,6 @@
                             </select>
                         </div>
                     </div> <!-- ./Barangay -->
-                    
-                    </div> <!-- ./Bond (Land valuation) -->
                     <div class="form-group"> <!-- Status -->
                         <label for="input-text" class="col-sm-2 control-label">Status</label>
                         <div class="col-sm-10">
@@ -158,8 +156,7 @@
                                     <option value="<?php echo $statusList->status_id ?>"><?php echo $statusList->status_name ?></option>
                                 <?php endforeach ?>
                             </select>
-                        </div>		
-						
+                        </div>
                     </div> <!-- ./Bond (Land valuation) -->
                     <div class="form-group"> <!-- Land Classification -->
                         <label for="input-text" class="col-sm-2 control-label">Land Classification</label>

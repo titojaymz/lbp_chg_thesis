@@ -60,7 +60,7 @@
                                     <th data-column-id="##" data-title="commands" data-formatter="linkedit"></th>
 									<th data-column-id="date_recvd_dar">Date Recieved from DAR</th>
 									<th data-column-id="claim_fld_no">CF's No.</th>
-									<th data-column-id="name_land_owner">Name of land owner</th>
+									<?php /* <th data-column-id="name_land_owner">Name of land owner</th> */ ?>
 									<th data-column-id="no_fbs">No. of FBs</th>
                                     <th data-column-id="title_no">Title no</th>
 									 <th data-column-id="area_acqrd">Area Acquired</th>
@@ -121,7 +121,7 @@
                 rowSelect: true,
                 selection: false,
                 sorting: true,
-                url: "<?php echo base_url('landregistration/renderLandRegistration'); ?>",
+                url: "<?php echo base_url('landregistration/renderLandRegistration/' . $user_region); ?>",
                 requestHandler: function (request) {
                     return request;
                 },
