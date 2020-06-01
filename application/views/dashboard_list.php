@@ -26,6 +26,9 @@
             </pre>
         <?php } ?>
 
+        <pre>
+            <?php print_r($this->session->userdata('user_region')) ?>
+        </pre>
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">

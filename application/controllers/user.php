@@ -61,7 +61,8 @@ class user extends CI_Controller
                     $newdata = array(
                         'user_id' => $userData['result']['uid'],
                         'user_data' => $full_name,
-                        'access_level' => $userData['result']['access_level']
+                        'access_level' => $userData['result']['access_level'],
+                        'user_region' => $userData['result']['region_code']
                     );
 
                     $this->session->set_userdata($newdata);
@@ -658,5 +659,13 @@ class user extends CI_Controller
             $message = 'Activation failed';
         }
         redirect('user/userlist?mes=' . $message);
+    }
+
+    public function tester($username)
+    {
+        $user_model = new User_model();
+        echo '<pre>';
+        print_r($userData = $user_model->getUserlogin($username));
+        echo '</pre>';
     }
 }

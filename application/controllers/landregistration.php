@@ -53,7 +53,8 @@ class landregistration extends CI_Controller
         $data = array(
             'system_message' => $message,
             'access_level' => $this->accessLevel(),
-            'landRegList' => $landRegList->getAllLandRegistration()
+            'landRegList' => $landRegList->getAllLandRegistration($this->session->userdata('user_region')),
+            'user_region' => $this->session->userdata('user_region')
         );
 
         $this->load->view('header');
@@ -81,7 +82,7 @@ class landregistration extends CI_Controller
             $data = array(
                 'system_message' => '',
                 'access_level' => $this->accessLevel(),
-                'landRegList' => $landRegList->getAllLandRegistration(),
+                'landRegList' => $landRegList->getAllLandRegistration($this->session->userdata('user_region')),
                 'prov_data' => $landRegList->getProvinces(),
                 'lib_status' => $landRegList->getStatus(),
                 'lib_regions' => $landRegList->getRegions(),
@@ -412,7 +413,7 @@ class landregistration extends CI_Controller
             $data = array(
                 'system_message' => '',
                 'access_level' => $this->accessLevel(),
-                'landRegList' => $landRegList->getAllLandRegistration(),
+                // 'landRegList' => $landRegList->getAllLandRegistration(),
                 'prov_data' => $landRegList->getProvinces(),
                 'lib_status' => $landRegList->getStatus(),
                 'landregistrationdata' => $landData,
@@ -828,11 +829,11 @@ class landregistration extends CI_Controller
         }
     }
 
-    public function renderLandRegistration() {
+    public function renderLandRegistration($user_region) {
 
         $VolunteerProfileAdminModel = new Landregistration_model();
 
-        $results_array = $VolunteerProfileAdminModel->getAllLandRegistration();
+        $results_array = $VolunteerProfileAdminModel->getAllLandRegistration($user_region);
         $nRows = $results_array[1];  //numRows
 
         $json=json_encode( $results_array[0] );
