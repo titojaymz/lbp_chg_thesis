@@ -61,6 +61,7 @@
 									<th data-column-id="date_recvd_dar">Date Recieved from DAR</th>
 									<th data-column-id="claim_fld_no">CF's No.</th>
 									<?php /* <th data-column-id="name_land_owner">Name of land owner</th> */ ?>
+                                    <th data-column-id="fullname">Name of land owner</th>
 									<th data-column-id="no_fbs">No. of FBs</th>
                                     <th data-column-id="title_no">Title no</th>
 									 <th data-column-id="area_acqrd">Area Acquired</th>
