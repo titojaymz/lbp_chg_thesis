@@ -69,8 +69,7 @@ class Division_model extends CI_Model
 
     public function getDivision($id)
     {
-        $q = $this->db->get_where('lib_division',array('division_id'=>$id));
-        return $q->row();
+        return $this->db->get_where('lib_division',array('division_id'=>$id))->row();
     }
 
     public function insert($division_name,$division_short_name)
