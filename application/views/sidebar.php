@@ -55,7 +55,7 @@
 								<a href="<?php echo base_url('position') ?>"><span>Position</span></a>
 							</li>
 							<li>
-							    <a href="<?php echo base_url('signatory') ?>"><span>Division</span></a>
+							    <a href="<?php echo base_url('division') ?>"><span>Division</span></a>
 							</li>
 							<li>
 								<a href="<?php echo base_url('status') ?>"><span>Status</span></a>

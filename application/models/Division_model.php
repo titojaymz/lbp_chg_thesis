@@ -66,4 +66,30 @@ class Division_model extends CI_Model
 
         return array($query->result(),$query1->num_rows());
     }
+
+    public function getDivision($id)
+    {
+        $q = $this->db->get_where('lib_division',array('division_id'=>$id));
+        return $q->row();
+    }
+
+    public function insert($division_name,$division_short_name)
+    {
+        $data = array(
+            'division_name' => $division_name,
+            'division_short_name' => $division_short_name
+        );
+        $this->db->insert('lib_division',$data);
+        return $this->db->insert_id();
+    }
+
+    public function update($division_name,$division_short_name,$id)
+    {
+        $data = array(
+            'division_name' => $division_name,
+            'division_short_name' => $division_short_name
+        );
+        $this->db->update('lib_division',$data,array('division_id'=>$id));
+        return $this->db->affected_rows();
+    }
 }
