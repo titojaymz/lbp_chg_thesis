@@ -14,7 +14,7 @@
 	<link href="<?php echo base_url('assets/jqueryui/jquery-ui.min.css" rel="stylesheet'); ?>" />
 	<link href="<?php echo base_url('assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet'); ?>" />
 
-	<script src="<?php echo base_url('assets/jquery-1.12.2.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/jquery-3.5.1.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/jqueryui/external/jquery/jquery.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/jqueryui/jquery-ui.min.js'); ?>"></script>
 

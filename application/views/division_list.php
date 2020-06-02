@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('signatory/signatoryadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('division/add') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
                     <!-- <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
             </div>
@@ -72,7 +72,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('signatory/signatoryadd') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
+                    <a href="<?php echo base_url('division/add') ?>" class="btn btn-sm btn-success"><i class="icon-doc-new"></i> Add New Record</a>
                     <!-- <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 formatters: {
                     "linkedit" : function(column, row) {
                         //return "<a class='btn btn-outline-info btn-sm' href='#'><span> EDIT </span></a>";
-                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('signatory/signatoryedit/'); ?>/" + row.signatory_id + "'><span> EDIT </span></a>";
+                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('division/edit/'); ?>/" + row.division_id + "'><span> EDIT </span></a>";
                     }
                     // "linksub" : function(column, row) {
                     // return "<a class='btn btn-outline-success btn-sm' href='<?php echo base_url(''); ?>/" + row.allotment_class_id + "'><span> PRODUCTION PLAN </span></a>";

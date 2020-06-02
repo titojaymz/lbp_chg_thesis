@@ -44,7 +44,7 @@
         */ ?>
                 </div>
             </div>
-            <body onload="getbodyProv();getbodyCities();getbodyBrgy();"></body>
+            <body</body>
             <div class="widget-content padding">
                 <form class="form-horizontal" role="form" method="post">
                     <div class="form-group"> <!-- Date Received from DAR -->
@@ -62,15 +62,19 @@
                     <div class="form-group"> <!-- Name of land owner -->
                         <label for="input-text" class="col-sm-2 control-label">Name of land owner</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Name of land owner" name="x_name_land_owner" id="x_name_land_owner" maxlength="100" value="<?php echo $landregistrationdata['name_land_owner'] ?>" required>
-                        </div>	
-					</div> <!-- ./Claim folder number -->	
+                            <select class="form-control" name="x_name_land_owner" id="x_name_land_owner">
+                                <option value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div> <!-- ./Name of land owner -->
+                    <?php /*
                     <div class="form-group"> <!-- Name of Processor-->
                         <label for="input-text" class="col-sm-2 control-label">Name of Processor</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control"  placeholder="Name of Processor" name="x_Processor_name" id="x_Processor_name" maxlength="100" value="<?php echo $landregistrationdata['Processor_name'] ?>" required>
                         </div>
                     </div> <!-- ./Name of land owner -->
+                    */ ?>
                     <div class="form-group"> <!-- No. of FBs -->
                         <label for="input-text" class="col-sm-2 control-label">No. of FBs</label>
                         <div class="col-sm-10">
@@ -401,4 +405,24 @@
 
                 // alert('cash_land_val ' + cash_land_val + ' and bond_land_val ' + bond_land_val + ' is equals to ' + roundOffTotal);
             }
+
+            $(document).ready(function(){
+                getbodyProv();
+                getbodyCities();
+                getbodyBrgy();
+                var land_owner_id = 'x_name_land_owner';
+                $.ajax({
+                    url: "<?php echo base_url('landregistration/landownerjson'); ?>",
+                    async: false,
+                    dataType: "json",
+                    success: function(data) {
+                        $('#' + land_owner_id +'').html('');
+                        $('#' + land_owner_id +'').append( '<option value="">Please Select</option>' );
+                        for (var i = 0 ; i < data.length;i++) {
+                            $('#' + land_owner_id +'').append( '<option value="'+ data[i].land_owner_id+'">'+ data[i].fullname +'</option>' );
+                        }
+                    }
+                });
+                $('#x_name_land_owner').val('<?php echo $landregistrationdata['land_owner_id'] ?>').trigger('change');
+            });
         </script>

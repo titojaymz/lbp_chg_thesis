@@ -10,7 +10,7 @@ class Division extends CI_Controller
 {
     public function title()
     {
-        return 'Signatories';
+        return 'Division';
     }
 
     public function accessLevel()
@@ -90,5 +90,102 @@ class Division extends CI_Controller
             echo $json;  //Just plain vanilla JSON output
         }
         exit;
+    }
+
+    public function add()
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $user_id = $this->session->userdata('user_id');
+
+        $landRegList = new Division_model();
+
+        $this->validatelandregistrationadd();
+
+        if (!$this->form_validation->run())
+        {
+            $data = array(
+                'system_message' => '',
+                'access_level' => $this->accessLevel(),
+                'page_title' => $this->title()
+            );
+
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('sidebar');
+            $this->load->view('division_add',$data);
+            $this->load->view('footer');
+        }
+        else
+        {
+            $x_signatory_position = $this->input->post('x_division_name');
+            $x_signatory_name = $this->input->post('x_division_short_name');
+
+            $insertResult = $landRegList->insert($x_signatory_position,$x_signatory_name);
+            if($insertResult > 0)
+            {
+                redirect('division/index/landaddsuccess','location');
+            }
+        }
+    }
+
+    public function edit($signatory_id)
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $user_id = $this->session->userdata('user_id');
+
+        $landRegList = new Division_model();
+
+        $this->validatelandregistrationadd();
+
+        if (!$this->form_validation->run())
+        {
+            $data = array(
+                'system_message' => '',
+                'access_level' => $this->accessLevel(),
+                'position_data' => $landRegList->getDivision($signatory_id),
+                'page_title' => $this->title()
+            );
+
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('sidebar');
+            $this->load->view('division_edit',$data);
+            $this->load->view('footer');
+        }
+        else
+        {
+            $x_signatory_position = $this->input->post('x_division_name');
+            $x_signatory_name = $this->input->post('x_division_short_name');
+
+            $insertResult = $landRegList->update($x_signatory_position,$x_signatory_name,$signatory_id);
+            if($insertResult > 0)
+            {
+                redirect('division/index/landaddsuccess','location');
+            }
+        }
+    }
+
+    protected function validatelandregistrationadd()
+    {
+        $config = array(
+            array(
+                'field'   => 'x_division_name',
+                'label'   => 'Division',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'x_division_short_name',
+                'label'   => 'Short name',
+                'rules'   => 'required'
+            )
+        );
+
+        return $this->form_validation->set_rules($config);
     }
 }

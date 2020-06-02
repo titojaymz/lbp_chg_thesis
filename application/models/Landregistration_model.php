@@ -51,7 +51,8 @@ class Landregistration_model extends CI_Model
                   c.muni_city_name as muni_city_name,
                   d.brgy_name as brgy_name,
                   f.land_class_name,
-                  g.status_name
+                  g.status_name,
+                  (SELECT CONCAT(COALESCE(lastname,''),' ',COALESCE(firstname,''),' ',COALESCE(middlename,''),' ',COALESCE(extname,'')) FROM tbl_land_owners WHERE land_owner_id=a.land_owner_id) AS fullname
                   FROM `tbl_land_reg` as a
                   LEFT JOIN lib_provinces as b on a.prov_id=b.prov_id
                   LEFT JOIN lib_cities as c on a.muni_city_id=c.muni_city_id
@@ -93,7 +94,7 @@ class Landregistration_model extends CI_Model
         $this->db->trans_begin();
 
         $this->db->query('INSERT INTO tbl_land_reg
-                      (date_recvd_dar, claim_fld_no, name_land_owner, Processor_name,
+                      (date_recvd_dar, claim_fld_no, land_owner_id,
                       no_fbs, area_per_title, area_acqrd, title_no,
                       area_aprvd, easementt, lot_no, land_use, region_id, prov_id,
                       muni_city_id, brgy_id, land_val_total_land_value,
@@ -107,7 +108,6 @@ class Landregistration_model extends CI_Model
                 "'.$date_recvd_dar.'",
                 "'.$claim_fld_no.'",
                 "'.$name_land_owner.'",
-				"'.$Processor_name.'",
                 "'.$no_fbs.'",
                 "'.$area_per_title.'",
                 "'.$area_acqrd.'",
@@ -199,8 +199,8 @@ class Landregistration_model extends CI_Model
             SET
             date_recvd_dar = "'.$date_recvd_dar.'",
             claim_fld_no = "'.$claim_fld_no.'",
-            name_land_owner = "'.$name_land_owner.'",
-			Processor_name = "'.$Processor_name.'",
+            land_owner_id = "'.$name_land_owner.'",
+			-- Processor_name = "'.$Processor_name.'",
             no_fbs = "'.$no_fbs.'",
             area_per_title = "'.$area_per_title.'",
             area_acqrd = "'.$area_acqrd.'",
@@ -253,5 +253,11 @@ class Landregistration_model extends CI_Model
     {
         $query = $this->db->get('lib_regions');
         return $query->result();
+    }
+
+    public function getLandOwners()
+    {
+        $this->db->select("land_owner_id,CONCAT(COALESCE(lastname,''),' ',COALESCE(firstname,''),' ',COALESCE(middlename,''),' ',COALESCE(extname,'')) AS fullname",false);
+        return $this->db->get_where('tbl_land_owners')->result();
     }
 }
