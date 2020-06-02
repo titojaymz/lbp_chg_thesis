@@ -851,5 +851,15 @@ class landregistration extends CI_Controller
         exit;
     }
 
+    public function landownerjson()
+    {
+        header('Content-Type: application/json'); //tell the broswer JSON is coming
+        $pms = new Landregistration_model();
+        $array = $pms->getLandOwners();
+        // print_r($array);
+        // die();
+        echo json_encode($array);
 
+        exit();
+    }
 }

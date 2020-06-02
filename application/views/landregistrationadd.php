@@ -61,7 +61,9 @@
                     <div class="form-group"> <!-- Name of land owner -->
                         <label for="input-text" class="col-sm-2 control-label">Name of land owner</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="Name of land owner" name="x_name_land_owner" id="x_name_land_owner" maxlength="100" value="<?php echo set_value('x_name_land_owner'); ?>" required>
+                            <select class="form-control" name="x_name_land_owner" id="x_name_land_owner">
+                                <option value="">Please Select</option>
+                            </select>
                         </div>
                     </div> <!-- ./Name of land owner -->
                     <div class="form-group"> <!-- No. of FBs -->
@@ -175,6 +177,21 @@
         </div> <!-- ./widget -->
 
         <script>
+            $(document).ready(function(){
+                var land_owner_id = 'x_name_land_owner';
+                $.ajax({
+                    url: "<?php echo base_url('landregistration/landownerjson'); ?>",
+                    async: false,
+                    dataType: "json",
+                    success: function(data) {
+                        $('#' + land_owner_id +'').html('');
+                        $('#' + land_owner_id +'').append( '<option value="">Please Select</option>' );
+                        for (var i = 0 ; i < data.length;i++) {
+                            $('#' + land_owner_id +'').append( '<option value="'+ data[i].land_owner_id+'">'+ data[i].fullname +'</option>' );
+                        }
+                    }
+                });
+            });
             function getProvince() {
                 var xhttp = new XMLHttpRequest();
                 var region_id = document.getElementById('x_region_id').value;

@@ -254,4 +254,10 @@ class Landregistration_model extends CI_Model
         $query = $this->db->get('lib_regions');
         return $query->result();
     }
+
+    public function getLandOwners()
+    {
+        $this->db->select("land_owner_id,CONCAT(COALESCE(lastname,''),' ',COALESCE(firstname,''),' ',COALESCE(middlename,''),' ',COALESCE(extname,'')) AS fullname",false);
+        return $this->db->get_where('tbl_land_owners')->result();
+    }
 }
