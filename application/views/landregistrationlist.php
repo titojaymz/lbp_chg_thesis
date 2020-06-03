@@ -58,6 +58,7 @@
                                 <thead>
                                 <tr>
                                     <th data-column-id="##" data-title="commands" data-formatter="linkedit"></th>
+                                    <th data-column-id="##" data-title="commands" data-formatter="linkfb"></th>
 									<th data-column-id="date_recvd_dar">Date Recieved from DAR</th>
 									<th data-column-id="claim_fld_no">CF's No.</th>
 									<?php /* <th data-column-id="name_land_owner">Name of land owner</th> */ ?>
@@ -130,6 +131,10 @@
                     "linkedit" : function(column, row) {
                         //return "<a class='btn btn-outline-info btn-sm' href='#'><span> EDIT </span></a>";
                         return "<a class='btn btn-info btn-sm' href='<?php echo base_url('landregistration/landregistrationedit/'); ?>/" + row.land_reg_id + "'><span> EDIT </span></a>";
+                    },
+                    "linkfb" : function(column, row) {
+                        //return "<a class='btn btn-outline-info btn-sm' href='#'><span> EDIT </span></a>";
+                        return "<a class='btn btn-info btn-sm' href='<?php echo base_url('fbs/index/'); ?>/" + row.land_reg_id + "'><span> FBs </span></a>";
                     }
                     // "linksub" : function(column, row) {
                     // return "<a class='btn btn-outline-success btn-sm' href='<?php echo base_url(''); ?>/" + row.allotment_class_id + "'><span> PRODUCTION PLAN </span></a>";
