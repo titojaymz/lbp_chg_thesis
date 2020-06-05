@@ -69,7 +69,7 @@
 						<i class='icon-music-1'></i><span>Reports</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
 					</a>
 					<ul>
-						<li><a href="<?php echo base_url('reports/generatemasterlist') ?>"><span>Masterlist</span></a></li>
+						<li><a href="<?php echo base_url('reports/masterlistview') ?>"><span>Masterlist</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaimsview') ?>"><span>Approved claims</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Status CF Recieved from DAR</span></a></li>
 						<li><a href="<?php echo base_url('reports/approvedClaims') ?>"><span>Summary of ApprvdClaim RA6657</span></a></li>
