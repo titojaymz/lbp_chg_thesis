@@ -71,10 +71,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         </div>
                                     </td>
                                     <td><?php echo $row->uid ?></td>
-                                    <td><strong><?php echo $row->full_name ?></strong></td>
+                                    <td><strong><?php echo $row->lastname . ' ' . $row->firstname . ' ' . $row->middlename . ' ' . $row->extname ?></strong></td>
                                     <td><?php echo $row->username ?></td>
                                     <td><?php echo $row->email ?></td>
-                                    <td><?php echo $row->activated ?></td>
+                                    <td><?php echo ($row->activated == 1) ? 'Yes' : 'No' ?></td>
                                     <td><?php echo ($row->access_level == -1)? 'Admin' : 'User' ?></td>
                                     <td><?php echo $row->locked_status ?></td>
                                     <td><?php echo $row->logged_in ?></td>

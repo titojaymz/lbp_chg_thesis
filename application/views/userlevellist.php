@@ -15,11 +15,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <div class="page-heading">
             <h1><i class='icon-flow-tree'></i>User level list</h1>
         </div>
-
+        <?php if ($system_message <> ''){ ?>
+            <div class="alert alert-info">
+                <strong><?php echo $system_message ?></strong>
+            </div>
+        <?php } ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('user/adduser') ?>" class="btn btn-sm btn-success"><i class="icon-user-add"></i> Add user</a>
+                    <a href="<?php echo base_url('user/userleveladd') ?>" class="btn btn-sm btn-success"><i class="icon-user-add"></i> Add </a>
                 </div>
             </div>
         </div>
@@ -42,14 +46,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>uid</th>
-                                    <th>full_name</th>
-                                    <th>username</th>
-                                    <th>email</th>
-                                    <th>activated</th>
-                                    <th>access_level</th>
-                                    <th>locked_status</th>
-                                    <th>logged_in</th>
+                                    <th>User level ID</th>
+                                    <th>User level Name</th>
                                 </tr>
                                 </thead>
 
@@ -60,18 +58,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <div class="btn btn-group">
                                             <!-- <a href="#" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-edit"></i></a>
                                             <a href="#" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>-->
-                                            <a href="#" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-check"></i> Activate user</a>
-                                            <a href="#" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-check"></i> Activate admin</a>
+                                            <a href="<?php echo base_url('user/userleveledit/' . $row->userlevelid) ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-check"></i> Edit</a>
                                         </div>
                                     </td>
-                                    <td><?php echo $row->uid ?></td>
-                                    <td><strong><?php echo $row->full_name ?></strong></td>
-                                    <td><?php echo $row->username ?></td>
-                                    <td><?php echo $row->email ?></td>
-                                    <td><?php echo $row->activated ?></td>
-                                    <td><?php echo $row->access_level ?></td>
-                                    <td><?php echo $row->locked_status ?></td>
-                                    <td><?php echo $row->logged_in ?></td>
+                                    <td><?php echo $row->userlevelid ?></td>
+                                    <td><?php echo $row->userlevelname ?></td>
                                 </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -84,7 +75,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
-                    <a href="<?php echo base_url('user/adduser') ?>" class="btn btn-sm btn-success"><i class="icon-user-add"></i> Add user</a>
+                    <a href="<?php echo base_url('user/userleveladd') ?>" class="btn btn-sm btn-success"><i class="icon-user-add"></i> Add </a>
                 </div>
             </div>
         </div>

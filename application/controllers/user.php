@@ -622,7 +622,7 @@ class user extends CI_Controller
         return $this->form_validation->set_rules($config);
     }
 
-    public function userlevellist()
+    public function userlevellist($message = null)
     {
         if (!$this->session->userdata('user_data')){
             redirect('user','location');
@@ -632,8 +632,24 @@ class user extends CI_Controller
 
         $userlist = new User_model();
 
-        $data['system_message'] = '';
-        $data['userlist'] = $userlist->getAllUsers();
+        if(isset($message))
+        {
+            if($message == 'addsuccess')
+            {
+                $text = 'Add success';
+            }
+            elseif($message= 'updatesuccess')
+            {
+                $text = 'Update success';
+            }
+        }
+        else
+        {
+            $text = '';
+        }
+
+        $data['system_message'] = $text;
+        $data['userlist'] = $userlist->getUserLevels();
 
         $this->load->view('header');
         $this->load->view('navbar',$data);
@@ -667,5 +683,107 @@ class user extends CI_Controller
         echo '<pre>';
         print_r($userData = $user_model->getUserlogin($username));
         echo '</pre>';
+    }
+
+    public function userleveladd()
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $data['access_level'] = $this->accessLevel();
+
+        $userlist = new User_model();
+
+        $data['system_message'] = '';
+        $data['userlist'] = $userlist->getUserLevels();
+
+        $this->validateuserleveladd();
+
+        if(!$this->form_validation->run())
+        {
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('sidebar');
+            $this->load->view('userleveladd',$data);
+            $this->load->view('footer');
+        }
+        else
+        {
+            $x_userlevelid = $this->input->post('x_userlevelid');
+            $x_userlevelname = $this->input->post('x_userlevelname');
+            $result = $userlist->insertUserLevel($x_userlevelid,$x_userlevelname);
+            if($result)
+            {
+                redirect('user/userlevellist/addsuccess');
+            }
+        }
+    }
+
+    public function userleveledit($id)
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $data['access_level'] = $this->accessLevel();
+
+        $userlist = new User_model();
+
+        $data['system_message'] = '';
+        $data['userlist'] = $userlist->getUserLevels();
+        $data['userleveldata'] = $userlist->getUserLevelsById($id);
+
+        $this->validateuserleveledit();
+
+        if(!$this->form_validation->run())
+        {
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('sidebar');
+            $this->load->view('userleveledit',$data);
+            $this->load->view('footer');
+        }
+        else
+        {
+            $x_userlevelid = $id;
+            $x_userlevelname = $this->input->post('x_userlevelname');
+            $result = $userlist->updateUserLevel($x_userlevelid,$x_userlevelname);
+            if($result)
+            {
+                redirect('user/userlevellist/updatesuccess');
+            }
+        }
+    }
+
+    protected function validateuserleveladd()
+    {
+        $config = array(
+            array(
+                'field'   => 'x_userlevelid',
+                'label'   => 'User level ID',
+                'rules'   => 'required'
+            ),
+            array(
+                'field'   => 'x_userlevelname',
+                'label'   => 'User level Name',
+                'rules'   => 'required'
+            )
+        );
+
+        return $this->form_validation->set_rules($config);
+    }
+
+    protected function validateuserleveledit()
+    {
+        $config = array(
+            array(
+                'field'   => 'x_userlevelname',
+                'label'   => 'User level Name',
+                'rules'   => 'required'
+            )
+        );
+
+        return $this->form_validation->set_rules($config);
     }
 }
