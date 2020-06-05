@@ -274,4 +274,26 @@ class Reports extends CI_Controller
         $this->load->view('approveclaim_list.php',$data);
         $this->load->view('footer');
     }
+
+    public function masterlistview()
+    {
+        if (!$this->session->userdata('user_data')){
+            redirect('user','location');
+        }
+
+        $page_type = 'Masterlist';
+        $reports = new Reports_model();
+        $data = array(
+            'landclass' => $reports->getLandClass(),
+            'apprv_claims' => $reports->getApproveClaims(1),
+            'page_title' => $this->title() . ' - ' . $page_type,
+            'access_level' => $this->accessLevel(),
+            'masterlist' => $reports->getLandRegistration()
+        );
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('sidebar');
+        $this->load->view('masterlistview_list',$data);
+        $this->load->view('footer');
+    }
 }

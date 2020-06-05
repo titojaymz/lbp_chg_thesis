@@ -68,6 +68,35 @@ class User_model extends CI_Model
         $this->db->update('users',$data,array('uid'=>$uid));
         return $this->db->affected_rows();
     }
+
+    public function getUserLevels()
+    {
+        return $this->db->get('userlevels')->result();
+    }
+
+    public function insertUserLevel($userlevelid,$userlevelname)
+    {
+        $data = array(
+            'userlevelid' => $userlevelid,
+            'userlevelname' => $userlevelname
+        );
+        $this->db->insert('userlevels',$data);
+        return $this->db->affected_rows();
+    }
+
+    public function updateUserLevel($userlevelid,$userlevelname)
+    {
+        $data = array(
+            'userlevelname' => $userlevelname
+        );
+        $this->db->update('userlevels',$data,array('userlevelid' => $userlevelid));
+        return $this->db->affected_rows();
+    }
+
+    public function getUserLevelsById($id)
+    {
+        return $this->db->get_where('userlevels',array('userlevelid'=>$id))->row();
+    }
 }
 
 
