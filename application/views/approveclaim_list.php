@@ -27,11 +27,34 @@
         <?php } ?>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="btn btn-group">
                     <a href="<?php echo base_url('reports/approvedClaims') ?>" class="btn btn-sm btn-success"><i class="icon-download"></i> Download report</a>
                     <!-- <a href="<?php echo base_url('Reports/generateMasterlist') ?>" class="btn btn-sm btn-info"><i class="icon-record"></i> Download Excel</a> -->
                 </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <form class="form-horizontal" role="form" method="post">
+                    <div class="form-group"> <!-- Date Received from DAR -->
+                        <label for="input-text" class="col-sm-2 control-label">Year</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="year" id="year">
+                                <option value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div> <!-- ./Date Received from DAR -->
+                    <div class="form-group"> <!-- Date Received from DAR -->
+                        <label for="input-text" class="col-sm-2 control-label">Month</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="month" id="month">
+                                <option value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div> <!-- ./Date Received from DAR -->
+                    <button type="submit" class="btn btn-sm btn-success">Filter</button>
+                </form>
             </div>
         </div>
         <div class="row">
@@ -91,6 +114,49 @@
         </div>
 
         <script>
+
+            $(document).ready(function(){
+
+                var yearID = 'year';
+                var monthID = 'month';
+                var monthz = [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December'
+                ];
+
+                $.ajax({
+                    success: function(data) {
+                        $('#' + yearID +'').html('');
+                        $('#' + yearID +'').append( '<option value="">Please Select</option>' );
+                        for (var i = 2018 ; i <= <?php echo date("Y") ?>;i++) {
+                            $('#' + yearID +'').append( '<option value="'+ i +'">'+ i +'</option>' );
+                        }
+                    }
+                });
+
+                $.ajax({
+                    success: function(data) {
+                        $('#' + monthID +'').html('');
+                        $('#' + monthID +'').append( '<option value="">Please Select</option>' );
+                        for (var i = 0 ; i < monthz.length;i++) {
+                            var ctr = i + 1;
+                            $('#' + monthID +'').append( '<option value="'+ ctr +'">'+ monthz[i] +'</option>' );
+                        }
+                    }
+                });
+
+            });
+
             gridSettings =
             {
                 ajax: true,

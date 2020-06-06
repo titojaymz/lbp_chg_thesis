@@ -262,16 +262,29 @@ class Reports extends CI_Controller
 
         $page_type = 'approved claims';
         $reports = new Reports_model();
+
+        // if year and month is selected
+        if(isset($_REQUEST['year']) && isset($_REQUEST['month']))
+        {
+            $year = $_REQUEST['year'];
+            $month = $_REQUEST['month'];
+            $repots = $reports->getApproveClaimsByYearMonth(1,$year,$month);
+        }
+        else
+        {
+            $repots = $reports->getApproveClaims(1);
+        }
+
         $data = array(
             'landclass' => $reports->getLandClass(),
-            'apprv_claims' => $reports->getApproveClaims(1),
+            'apprv_claims' => $repots,
             'page_title' => $this->title() . ' - ' . $page_type,
             'access_level' => $this->accessLevel()
         );
         $this->load->view('header');
         $this->load->view('navbar',$data);
         $this->load->view('sidebar');
-        $this->load->view('approveclaim_list.php',$data);
+        $this->load->view('approveclaim_list',$data);
         $this->load->view('footer');
     }
 
@@ -295,5 +308,13 @@ class Reports extends CI_Controller
         $this->load->view('sidebar');
         $this->load->view('masterlistview_list',$data);
         $this->load->view('footer');
+    }
+
+    public function tester()
+    {
+        $reports = new Reports_model();
+        echo '<pre>';
+        print_r($reports->getApproveClaimsByYearMonth(1,2018,1));
+        echo '</pre>';
     }
 }
