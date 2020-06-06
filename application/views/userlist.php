@@ -66,8 +66,21 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <div class="btn btn-group">
                                             <!-- <a href="#" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-edit"></i></a>
                                             <a href="#" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>-->
-                                            <a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '1') ?>" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-check"></i> Activate user</a>
-                                            <a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '-1') ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-check"></i> Activate admin</a>
+
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-cog"></i> Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '1') ?>"><i class="glyphicon glyphicon-check"></i> Activate user</a></li>
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '-1') ?>"><i class="glyphicon glyphicon-check"></i> Activate admin</a></li>
+                                                <?php /*
+                                                <li class="divider"></li>
+                                                <li><a href="#fakelink">Separated link</a></li>
+                                                */ ?>
+
+                                            </ul>
                                         </div>
                                     </td>
                                     <td><?php echo $row->uid ?></td>
