@@ -55,6 +55,46 @@
                     <div class="widget-content">
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Claim folder no</th>
+                                    <th>Land owner</th>
+                                    <th>No of FBs</th>
+                                    <th>Area per title</th>
+                                    <th>Area acquired</th>
+                                    <th>Title no</th>
+                                    <th>Area approved</th>
+                                    <th>Easement</th>
+                                    <th>Lot no</th>
+                                    <th>Land use</th>
+                                    <th>Region</th>
+                                    <th>Province</th>
+                                    <th>Municipality/City</th>
+                                    <th>Barangay</th>
+                                    <th>Total land value</th>
+                                    <th>Land value cash</th>
+                                    <th>Land value bond</th>
+                                    <th>Status</th>
+                                    <th>Pending division</th>
+                                    <th>Date MOV CVPF</th>
+                                    <th>Date COD</th>
+                                    <th>Date last ammended</th>
+                                    <th>Date COD 2</th>
+                                    <th>Date returned</th>
+                                    <th>Bond serial no</th>
+                                    <th>Status 2</th>
+                                    <th>Rel Total</th>
+                                    <th>Rel cash</th>
+                                    <th>Rel bond</th>
+                                    <th>Rel bond ao 2</th>
+                                    <th>End bal total</th>
+                                    <th>End bal cash</th>
+                                    <th>End bal bond</th>
+                                    <th>Land class</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
                                 <?php foreach($masterlist as $masterdata) { ?>
                                     <tr>
                                         <td><?php echo $masterdata['claim_fld_no'] ?></td>
