@@ -55,7 +55,7 @@ class status extends CI_Controller
             }
         }
 
-        $landRegList = new Land_class_model();
+        $Status_model = new Status_model();
 
         $data = array(
             'system_message' => $message,
@@ -66,11 +66,11 @@ class status extends CI_Controller
         $this->load->view('header');
         $this->load->view('navbar',$data);
         $this->load->view('sidebar');
-        $this->load->view('landclass_list',$data);
+        $this->load->view('status_list',$data);
         $this->load->view('footer');
     }
 
-    public function landclassnadd()
+    public function statusadd()
     {
         if (!$this->session->userdata('user_data')){
             redirect('user','location');
@@ -78,7 +78,7 @@ class status extends CI_Controller
 
         $user_id = $this->session->userdata('user_id');
 
-        $landRegList = new Land_class_model();
+        $landRegList = new Status_model();
 
         $this->validatelandregistrationadd();
 
@@ -93,23 +93,22 @@ class status extends CI_Controller
             $this->load->view('header');
             $this->load->view('navbar',$data);
             $this->load->view('sidebar');
-            $this->load->view('landclass_add',$data);
+            $this->load->view('status_add',$data);
             $this->load->view('footer');
         }
         else
         {
-            $x_land_class_code = $this->input->post('x_land_class_code');
-            $x_land_class_name = $this->input->post('x_land_class_name');
+            $x_status_name = $this->input->post('x_status_name');
 
-            $insertResult = $landRegList->create($x_land_class_code,$x_land_class_name);
+            $insertResult = $landRegList->create($x_status_name);
             if($insertResult > 0)
             {
-                redirect('landclass/index/landaddsuccess','location');
+                redirect('status/index/landaddsuccess');
             }
         }
     }
 
-    public function landclassedit($land_class_id)
+    public function statusedit($id)
     {
         if (!$this->session->userdata('user_data')){
             redirect('user','location');
@@ -117,7 +116,7 @@ class status extends CI_Controller
 
         $user_id = $this->session->userdata('user_id');
 
-        $landRegList = new Land_class_model();
+        $landRegList = new Status_model();
 
         $this->validatelandregistrationadd();
 
@@ -126,25 +125,24 @@ class status extends CI_Controller
             $data = array(
                 'system_message' => '',
                 'access_level' => $this->accessLevel(),
-                'land_class_data' => $landRegList->getLandClassDetail($land_class_id),
-                'page_title' => $this->title()
+                'page_title' => $this->title(),
+                'status_data' => $landRegList->getStatusDetail($id)
             );
 
             $this->load->view('header');
             $this->load->view('navbar',$data);
             $this->load->view('sidebar');
-            $this->load->view('landclass_edit.php',$data);
+            $this->load->view('status_edit',$data);
             $this->load->view('footer');
         }
         else
         {
-            $position_code = $this->input->post('x_land_class_code');
-            $position_name = $this->input->post('x_land_class_name');
+            $x_status_name = $this->input->post('x_status_name');
 
-            $insertResult = $landRegList->update($land_class_id,$position_code,$position_name);
+            $insertResult = $landRegList->update($id,$x_status_name);
             if($insertResult > 0)
             {
-                redirect('landclass/index/landaddsuccess','location');
+                redirect('status/index/landupdatesuccess');
             }
         }
     }
@@ -153,13 +151,8 @@ class status extends CI_Controller
     {
         $config = array(
             array(
-                'field'   => 'x_land_class_code',
-                'label'   => 'Land classification code',
-                'rules'   => 'required'
-            ),
-            array(
-                'field'   => 'x_land_class_name',
-                'label'   => 'Land classification name',
+                'field'   => 'x_status_name',
+                'label'   => 'Status',
                 'rules'   => 'required'
             )
         );
@@ -169,9 +162,9 @@ class status extends CI_Controller
 
     public function renderlandclasslist() {
 
-        $Psgc = new Land_class_model();
+        $Psgc = new Status_model();
 
-        $results_array = $Psgc->getLandClass();
+        $results_array = $Psgc->getStatus();
         $nRows = $results_array[1];  //numRows
 
         $json=json_encode( $results_array[0] );
