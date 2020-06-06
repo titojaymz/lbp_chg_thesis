@@ -70,11 +70,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         </div>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-cog"></i> Action <span class="caret"></span>
+                                                <i class="fa fa-cog"></i> Activation <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '1') ?>"><i class="glyphicon glyphicon-check"></i> Activate user</a></li>
-                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '-1') ?>"><i class="glyphicon glyphicon-check"></i> Activate admin</a></li>
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '-1') ?>"><i class="glyphicon glyphicon-check"></i> Super admin</a></li>
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '1') ?>"><i class="glyphicon glyphicon-check"></i> Admin</a></li>
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '2') ?>"><i class="glyphicon glyphicon-check"></i> User</a></li>
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '3') ?>"><i class="glyphicon glyphicon-check"></i> DAR User</a></li>
                                                 <?php /*
                                                 <li class="divider"></li>
                                                 <li><a href="#fakelink">Separated link</a></li>
