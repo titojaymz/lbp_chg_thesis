@@ -112,7 +112,7 @@
                         data: {
                             labels: [ 'Fully paid', 'Partial Paid' , 'Approved' , 'Paid under AO 2' , 'Pending claim' ],
                             datasets: [{
-                                label: 'No of land owerns for <?php echo $claimsData->prov_name ?> province',
+                                label: 'No of FBs for <?php echo $claimsData->prov_name ?> province',
                                 data: ['<?php echo $claimsData->fully_paid ?>','<?php echo $claimsData->partial_paid ?>','<?php echo $claimsData->approved ?>','<?php echo $claimsData->paid_under_ao2 ?>','<?php echo $claimsData->pending_claim ?>'],
                                 backgroundColor: [
                                     'rgba(101, 189, 183, 1)',

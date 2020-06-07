@@ -93,4 +93,23 @@ class Reports_model extends CI_Model
         $q = $this->db->query($sql);
         return $q->result();
     }
+
+    public function report2()
+    {
+        $sql = '
+            select
+            b.prov_name,
+            b.prov_id,
+            (select COUNT(*) from tbl_land_reg as a inner join tbl_fbs as x on a.land_reg_id=x.land_reg_id where a.status_id=2 and a.prov_id=b.prov_id) AS fully_paid,
+            (select COUNT(*) from tbl_land_reg as a inner join tbl_fbs as x on a.land_reg_id=x.land_reg_id where a.status_id=3 and a.prov_id=b.prov_id) AS partial_paid,
+            (select COUNT(*) from tbl_land_reg as a inner join tbl_fbs as x on a.land_reg_id=x.land_reg_id where a.status_id=4 and a.prov_id=b.prov_id) AS approved,
+            (select COUNT(*) from tbl_land_reg as a inner join tbl_fbs as x on a.land_reg_id=x.land_reg_id where a.status_id=6 and a.prov_id=b.prov_id) AS paid_under_ao2,
+            (select COUNT(*) from tbl_land_reg as a inner join tbl_fbs as x on a.land_reg_id=x.land_reg_id where a.status_id=7 and a.prov_id=b.prov_id) AS pending_claim
+            from
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
 }
