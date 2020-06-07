@@ -829,11 +829,20 @@ class landregistration extends CI_Controller
         }
     }
 
-    public function renderLandRegistration($user_region) {
+    public function renderLandRegistration($user_region,$year=null,$month=null) {
 
         $VolunteerProfileAdminModel = new Landregistration_model();
 
-        $results_array = $VolunteerProfileAdminModel->getAllLandRegistration($user_region);
+        if(isset($year) && isset($month))
+        {
+            $results_array = $VolunteerProfileAdminModel->getAllLandRegistration($user_region,$year,$month);
+        }
+        else
+        {
+            $results_array = $VolunteerProfileAdminModel->getAllLandRegistration($user_region);
+        }
+
+
         $nRows = $results_array[1];  //numRows
 
         $json=json_encode( $results_array[0] );
