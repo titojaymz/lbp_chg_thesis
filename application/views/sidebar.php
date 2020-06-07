@@ -45,6 +45,9 @@
 							<i class='icon-book-2'></i><span>Libraries</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
 						</a>
 						<ul>
+                            <li>
+                                <a href="<?php echo base_url('landowner') ?>"><span>Landowners</span></a>
+                            </li>
 							<li>
 								<a href="<?php echo base_url('psgc_region') ?>"><span>PSGC Region</span></a>
 							</li>
