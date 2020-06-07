@@ -46,7 +46,7 @@
                 --><?php /*} */?>
                 <h4><strong>Land Classification Claims - VOS</strong></h4>
                 <?php foreach($apprv_claims as $i => $claimsData) { ?>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="widget">
                         <div class="widget-header transparent">
                             <h4><strong><?php echo $claimsData->prov_name ?></strong></h4>
