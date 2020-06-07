@@ -18,9 +18,12 @@
 		<!--- Divider -->
 		<div id="sidebar-menu">
 			<ul>
-				<li>
-					<a href="<?php echo base_url('dashboard') ?>"><i class='icon-home-3'></i><span>Dashboard</span></a>
-
+                <li class='has_sub'>
+					<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
+                    <ul>
+                        <li><a href="<?php echo base_url('dashboard/index') ?>">No of land owners</a></li>
+                        <li><a href="<?php echo base_url('dashboard/index2') ?>">No of FBs</a></li>
+                    </ul>
 				</li>
 				<li>
 					<a href="<?php echo base_url('landregistration') ?>"><i class='icon-pencil'></i><span>Masterlist</span></a>
