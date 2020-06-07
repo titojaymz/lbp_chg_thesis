@@ -6,10 +6,17 @@
  */
 class Landregistration_model extends CI_Model
 {
-    public function getAllLandRegistration($current_user_region)
+    public function getAllLandRegistration($current_user_region,$year=null,$month=null)
     {
         $limit_lower = "";
-        $where =" a.region_id=" . $current_user_region . " AND a.DELETED=0 ";
+        if(isset($year) && isset($month))
+        {
+            $where =" a.region_id=" . $current_user_region . " AND a.DELETED=0 AND year(date_last_ammended) = ".$year." AND month(date_last_ammended) = " . $month;
+        }
+        else
+        {
+            $where =" a.region_id=" . $current_user_region . " AND a.DELETED=0";
+        }
         $rows=25;
         $current=1;
         $limit_l=($current * $rows) - ($rows);
