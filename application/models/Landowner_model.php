@@ -103,6 +103,22 @@ class Landowner_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function updatelandowner($lastname,$firstname,$middlename,$extname,$region_id,$prov,$municity,$brgy,$id)
+    {
+        $data = array(
+            'lastname' => $lastname,
+            'firstname' => $firstname,
+            'middlename' => $middlename,
+            'extname' => $extname,
+            'region_id' => $region_id,
+            'prov_id' => $prov,
+            'muni_city_id' => $municity,
+            'barangay_id' => $brgy
+        );
+        $this->db->update('tbl_land_owners',$data,array('land_owner_id'=>$id));
+        return $this->db->affected_rows();
+    }
+
     public function getProvinces($id = 5) // provinces were filtered by default to region 5
     {
         $query = $this->db->get_where('lib_provinces',array('region_id' => $id));
@@ -129,7 +145,7 @@ class Landowner_model extends CI_Model
 
     public function getDetailsById($id)
     {
-        $query = $this->db->get_where('tbl_land_reg', array('land_reg_id' => $id));
+        $query = $this->db->get_where('tbl_land_owners', array('land_owner_id' => $id));
         return $query->row_array();
     }
 
