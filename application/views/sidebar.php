@@ -23,6 +23,15 @@
                     <ul>
                         <li><a href="<?php echo base_url('dashboard/index') ?>">No of land owners</a></li>
                         <li><a href="<?php echo base_url('dashboard/index2') ?>">No of FBs</a></li>
+                        <li><a href="<?php echo base_url('dashboard/fully_paid_claims') ?>">Fully paid claims</a></li>
+                        <li><a href="<?php echo base_url('dashboard/partial_paid_claims') ?>">Partially paid claims</a></li>
+                        <li><a href="<?php echo base_url('dashboard/paid_under_ao2') ?>">Paid under AO2</a></li>
+                        <li><a href="<?php echo base_url('dashboard/approved_claims') ?>">Approved claims</a></li>
+                        <li><a href="<?php echo base_url('dashboard/area_approved') ?>">Total area - Fully paid</a></li>
+                        <li><a href="<?php echo base_url('dashboard/area_partial_paid') ?>">Total area - Partially paid</a></li>
+                        <li><a href="<?php echo base_url('dashboard/area_paid_under_ao2') ?>">Total area - Paid under AO2</a></li>
+                        <li><a href="<?php echo base_url('dashboard/area_approved_claims') ?>">Total area - Approved claims</a></li>
+                        <li><a href="<?php echo base_url('dashboard/area_pending') ?>">Total area - Pending claims</a></li>
                     </ul>
 				</li>
 				<li>

@@ -45,7 +45,7 @@
                         <?php /*print_r($landRegList) */?>
                     </pre>
                 --><?php /*} */?>
-                <h4><strong>Land Classification Claims - VOS</strong></h4>
+                <h4><strong>Land Classification Claims - VOS (Partially paid claims)</strong></h4>
                 <?php foreach($apprv_claims as $i => $claimsData) { ?>
                 <div class="col-md-6">
                     <div class="widget">
@@ -111,10 +111,10 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: [ 'Fully paid', 'Partial Paid' , 'Approved' , 'Paid under AO 2' , 'Pending claim' ],
+                            labels: [ 'Cash','Bond' ],
                             datasets: [{
-                                label: 'No of land owerns for <?php echo $claimsData->prov_name ?> province',
-                                data: ['<?php echo $claimsData->fully_paid ?>','<?php echo $claimsData->partial_paid ?>','<?php echo $claimsData->approved ?>','<?php echo $claimsData->paid_under_ao2 ?>','<?php echo $claimsData->pending_claim ?>'],
+                                label: 'Total amount for <?php echo $claimsData->prov_name ?> province',
+                                data: ['<?php echo $claimsData->cash ?>','<?php echo $claimsData->bond ?>'],
                                 backgroundColor: [
                                     'rgba(101, 189, 183, 1)',
                                     'rgba(101, 160, 189, 1)',
