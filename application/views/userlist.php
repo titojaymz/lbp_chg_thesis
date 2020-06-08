@@ -77,6 +77,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '1') ?>"><i class="glyphicon glyphicon-check"></i> Admin</a></li>
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '2') ?>"><i class="glyphicon glyphicon-check"></i> User</a></li>
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '3') ?>"><i class="glyphicon glyphicon-check"></i> DAR User</a></li>
+                                                <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '4') ?>"><i class="glyphicon glyphicon-check"></i> Deactivate</a></li>
                                                 <?php /*
                                                 <li class="divider"></li>
                                                 <li><a href="#fakelink">Separated link</a></li>
@@ -90,7 +91,31 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <td><?php echo $row->username ?></td>
                                     <td><?php echo $row->email ?></td>
                                     <td><?php echo ($row->activated == 1) ? 'Yes' : 'No' ?></td>
-                                    <td><?php echo ($row->access_level == -1)? 'Admin' : 'User' ?></td>
+                                    <?php
+                                    // access level text
+                                    switch($row->access_level)
+                                    {
+                                        case -1:
+                                            $acces_text = 'Super admin';
+                                            break;
+                                        case 0:
+                                            $acces_text = 'Super admin';
+                                            break;
+                                        case 1:
+                                            $acces_text = 'Admin';
+                                            break;
+                                        case 2:
+                                            $acces_text = 'User';
+                                            break;
+                                        case 3:
+                                            $acces_text = 'DAR user';
+                                            break;
+                                        case 4:
+                                            $acces_text = 'Deactivated';
+                                            break;
+                                    }
+                                    ?>
+                                    <td><?php echo $acces_text ?></td>
                                     <td><?php echo $row->locked_status ?></td>
                                     <td><?php echo $row->logged_in ?></td>
                                 </tr>
