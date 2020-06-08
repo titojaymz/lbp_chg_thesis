@@ -261,4 +261,32 @@ class Reports_model extends CI_Model
         $q = $this->db->query($sql);
         return $q->result();
     }
+
+    public function getTotalLandOwner()
+    {
+        $sql = '
+            select
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=2) AS fully_paid,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=3) AS partial_paid,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=4) AS approved,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=6) AS paid_under_ao2,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=7) AS pending_claim
+        ';
+        $q = $this->db->query($sql);
+        return $q->row();
+    }
+
+    public function getTotalFBs()
+    {
+        $sql = '
+            select
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=2) AS fully_paid,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=3) AS partial_paid,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=4) AS approved,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=6) AS paid_under_ao2,
+            (select COUNT(*) from tbl_land_reg as a where a.status_id=7) AS pending_claim
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
 }

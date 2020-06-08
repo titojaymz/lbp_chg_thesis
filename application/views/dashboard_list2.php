@@ -67,6 +67,25 @@
                     </div>
                 </div>
                 <?php } ?>
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header transparent">
+                            <h4><strong><?php echo 'Total' ?></strong></h4>
+                            <div class="additional-btn">
+                                <?php /*
+                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                        <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                        */ ?>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget-content"> <?php // May 9, 2020 08:41 Manoy Carrie, burahin mo na sana su style="display: none;" kung muya mong naka open sinda, pero ok na ini e di good :D ?>
+                            <div class="table-responsive chart-container">
+                                <canvas id="myChart_total"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -166,3 +185,62 @@
                     });
                 </script>
             <?php } ?>
+        <script>
+            var ctx = document.getElementById('myChart_total');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [ 'Fully paid', 'Partial Paid' , 'Approved' , 'Paid under AO 2' , 'Pending claim' ],
+                    datasets: [{
+                        label: 'No of land owerns',
+                        data: ['<?php echo $totals->fully_paid ?>','<?php echo $totals->partial_paid ?>','<?php echo $totals->approved ?>','<?php echo $totals->paid_under_ao2 ?>','<?php echo $totals->pending_claim ?>'],
+                        backgroundColor: [
+                            'rgba(101, 189, 183, 1)',
+                            'rgba(101, 160, 189, 1)',
+                            'rgba(101, 129, 189, 1)',
+                            'rgba(61, 168, 52, 1)',
+                            'rgba(79, 46, 107, 1)',
+                            'rgba(52, 83, 168, 1)',
+                            'rgba(168, 52, 52, 1)',
+                            'rgba(168, 123, 52, 1)',
+                            'rgba(71, 52, 168, 1)',
+                            'rgba(135, 52, 168, 1)',
+                            'rgba(168, 52, 121, 1)',
+                            'rgba(52, 129, 168, 1)',
+                            'rgba(168, 67, 52, 1)',
+                            'rgba(168, 52, 79, 1)',
+                            'rgba(168, 52, 168, 1)',
+                            'rgba(168, 158, 52, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(101, 189, 183, 1)',
+                            'rgba(101, 160, 189, 1)',
+                            'rgba(101, 129, 189, 1)',
+                            'rgba(61, 168, 52, 1)',
+                            'rgba(79, 46, 107, 1)',
+                            'rgba(52, 83, 168, 1)',
+                            'rgba(168, 52, 52, 1)',
+                            'rgba(168, 123, 52, 1)',
+                            'rgba(71, 52, 168, 1)',
+                            'rgba(135, 52, 168, 1)',
+                            'rgba(168, 52, 121, 1)',
+                            'rgba(52, 129, 168, 1)',
+                            'rgba(168, 67, 52, 1)',
+                            'rgba(168, 52, 79, 1)',
+                            'rgba(168, 52, 168, 1)',
+                            'rgba(168, 158, 52, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>

@@ -110,7 +110,8 @@ class dashboard extends CI_Controller
             'access_level' => $this->accessLevel(),
             'page_title' => $this->title(),
             'landclass' => $reports->getLandClass(),
-            'apprv_claims' => $reports->report1()
+            'apprv_claims' => $reports->report1(),
+            'totals' => $reports->getTotalLandOwner()
         );
 
         $this->load->view('header');
