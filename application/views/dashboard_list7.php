@@ -24,11 +24,12 @@
             <pre>
                 <?php print_r($access_level) ?>
             </pre>
-        <?php } ?>
-
-        <pre>
+            <pre>
             <?php print_r($this->session->userdata('user_region')) ?>
         </pre>
+        <?php } ?>
+
+
         <div class="row">
             <div class="col-md-12">
                 <div class="btn btn-group">
