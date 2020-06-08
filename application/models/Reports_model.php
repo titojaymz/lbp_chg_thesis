@@ -112,4 +112,153 @@ class Reports_model extends CI_Model
         $q = $this->db->query($sql);
         return $q->result();
     }
+
+    public function report3()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(land_val_cash) from tbl_land_reg as a where a.status_id=2 and a.prov_id=b.prov_id) as cash,
+            (select sum(land_val_bond) from tbl_land_reg as a where a.status_id=2 and a.prov_id=b.prov_id) as bond
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report4()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(land_val_cash) from tbl_land_reg as a where a.status_id=3 and a.prov_id=b.prov_id) as cash,
+            (select sum(land_val_bond) from tbl_land_reg as a where a.status_id=3 and a.prov_id=b.prov_id) as bond
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report5()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(land_val_cash) from tbl_land_reg as a where a.status_id=6 and a.prov_id=b.prov_id) as cash,
+            (select sum(land_val_bond) from tbl_land_reg as a where a.status_id=6 and a.prov_id=b.prov_id) as bond
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report6()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(land_val_cash) from tbl_land_reg as a where a.status_id=4 and a.prov_id=b.prov_id) as cash,
+            (select sum(land_val_bond) from tbl_land_reg as a where a.status_id=4 and a.prov_id=b.prov_id) as bond
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report7()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(area_acqrd) from tbl_land_reg as a where a.status_id=2 and a.prov_id=b.prov_id) as area_acqrd,
+            (select sum(area_aprvd) from tbl_land_reg as a where a.status_id=2 and a.prov_id=b.prov_id) as area_aprvd,
+            (select sum(easementt) from tbl_land_reg as a where a.status_id=2 and a.prov_id=b.prov_id) as easementt
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report8()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(area_acqrd) from tbl_land_reg as a where a.status_id=3 and a.prov_id=b.prov_id) as area_acqrd,
+            (select sum(area_aprvd) from tbl_land_reg as a where a.status_id=3 and a.prov_id=b.prov_id) as area_aprvd,
+            (select sum(easementt) from tbl_land_reg as a where a.status_id=3 and a.prov_id=b.prov_id) as easementt
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report9()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(area_acqrd) from tbl_land_reg as a where a.status_id=6 and a.prov_id=b.prov_id) as area_acqrd,
+            (select sum(area_aprvd) from tbl_land_reg as a where a.status_id=6 and a.prov_id=b.prov_id) as area_aprvd,
+            (select sum(easementt) from tbl_land_reg as a where a.status_id=6 and a.prov_id=b.prov_id) as easementt
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report10()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(area_acqrd) from tbl_land_reg as a where a.status_id=4 and a.prov_id=b.prov_id) as area_acqrd,
+            (select sum(area_aprvd) from tbl_land_reg as a where a.status_id=4 and a.prov_id=b.prov_id) as area_aprvd,
+            (select sum(easementt) from tbl_land_reg as a where a.status_id=4 and a.prov_id=b.prov_id) as easementt
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
+
+    public function report11()
+    {
+        $sql = '
+            SELECT
+            prov_name,
+            prov_id,
+            (select sum(area_acqrd) from tbl_land_reg as a where a.status_id=7 and a.prov_id=b.prov_id) as area_acqrd,
+            (select sum(area_aprvd) from tbl_land_reg as a where a.status_id=7 and a.prov_id=b.prov_id) as area_aprvd,
+            (select sum(easementt) from tbl_land_reg as a where a.status_id=7 and a.prov_id=b.prov_id) as easementt
+            FROM
+            lib_provinces as b
+            where region_id=5
+        ';
+        $q = $this->db->query($sql);
+        return $q->result();
+    }
 }
