@@ -289,4 +289,14 @@ class Reports_model extends CI_Model
         $q = $this->db->query($sql);
         return $q->result();
     }
+
+    public function getOverAllTotalLandowners()
+    {
+        return $this->db->get('tbl_land_reg')->num_rows();
+    }
+
+    public function getOverAllTotalFbs()
+    {
+        return $this->db->get('tbl_fbs')->num_rows();
+    }
 }

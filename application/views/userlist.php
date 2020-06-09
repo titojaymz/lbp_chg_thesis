@@ -77,7 +77,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '1') ?>"><i class="glyphicon glyphicon-check"></i> Admin</a></li>
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '2') ?>"><i class="glyphicon glyphicon-check"></i> User</a></li>
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '3') ?>"><i class="glyphicon glyphicon-check"></i> DAR User</a></li>
+                                                <?php if ($access_level == -1) { ?>
                                                 <li><a href="<?php echo base_url('user/activateUser/' . $row->uid . '/' . '4') ?>"><i class="glyphicon glyphicon-check"></i> Deactivate</a></li>
+                                                <?php } ?>
                                                 <?php /*
                                                 <li class="divider"></li>
                                                 <li><a href="#fakelink">Separated link</a></li>
