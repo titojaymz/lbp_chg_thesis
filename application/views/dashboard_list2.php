@@ -45,7 +45,9 @@
                         <?php /*print_r($landRegList) */?>
                     </pre>
                 --><?php /*} */?>
-                <h4><strong>Land Classification Claims - VOS</strong></h4>
+                <h3><strong>Land Classification Claims - VOS</strong></h3>
+                <h4>Total land owners: <?php echo $totallandowner ?></h4>
+                <h4>Total Farmer beneficiaries: <?php echo $totalFbs ?></h4>
                 <?php foreach($apprv_claims as $i => $claimsData) { ?>
                 <div class="col-md-6">
                     <div class="widget">

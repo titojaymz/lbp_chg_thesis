@@ -111,7 +111,9 @@ class dashboard extends CI_Controller
             'page_title' => $this->title(),
             'landclass' => $reports->getLandClass(),
             'apprv_claims' => $reports->report1(),
-            'totals' => $reports->getTotalLandOwner()
+            'totals' => $reports->getTotalLandOwner(),
+            'totallandowner' => $reports->getOverAllTotalLandowners(),
+            'totalFbs' => $reports->getOverAllTotalFbs()
         );
 
         $this->load->view('header');
