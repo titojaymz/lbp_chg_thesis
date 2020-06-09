@@ -109,7 +109,7 @@
                 <script>
                     var ctx = document.getElementById('myChart<?php echo $i ?>');
                     var myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'pie',
                         data: {
                             labels: [ 'Fully paid', 'Partial Paid' , 'Approved' , 'Paid under AO 2' , 'Pending claim' ],
                             datasets: [{
