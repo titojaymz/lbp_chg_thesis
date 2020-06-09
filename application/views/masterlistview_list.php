@@ -98,7 +98,7 @@
                                 <?php foreach($masterlist as $masterdata) { ?>
                                     <tr>
                                         <td><?php echo $masterdata['claim_fld_no'] ?></td>
-                                        <td><?php echo $masterdata['land_owner_id'] ?></td>
+                                        <td><?php echo $masterdata['full_name'] ?></td>
                                         <td><?php echo $masterdata['no_fbs'] ?></td>
                                         <td><?php echo $masterdata['area_per_title'] ?></td>
                                         <td><?php echo $masterdata['area_acqrd'] ?></td>

@@ -8,8 +8,16 @@ class Reports_model extends CI_Model
 {
     public function getLandRegistration()
     {
-        $a = $this->db->get('tbl_land_reg');
-        return $a->result_array();
+        $sql = '
+            SELECT
+            a.*,
+            CONCAT(COALESCE(b.lastname,"")," ",COALESCE(b.firstname,"")," ",COALESCE(b.middlename,"")," ",COALESCE(b.extname,"")) as full_name
+            FROM
+            tbl_land_reg as a
+            LEFT JOIN tbl_land_owners as b on a.land_owner_id=b.land_owner_id
+        ';
+        $q = $this->db->query($sql);
+        return $q->result_array();
     }
 
     public function getNameById($table_name,$id,$param)
