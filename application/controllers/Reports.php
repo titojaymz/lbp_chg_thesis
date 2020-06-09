@@ -181,7 +181,7 @@ class Reports extends CI_Controller
             $excel->setActiveSheetIndex(0)
                 ->setCellValue('A' . $activeRow,date("M j, Y",strtotime($rowData['date_recvd_dar'])))
                 ->setCellValue('B'. $activeRow,$rowData['claim_fld_no'])
-                ->setCellValue('C'. $activeRow,$rowData['name_land_owner'])
+                ->setCellValue('C'. $activeRow,$rowData['full_name'])
                 ->setCellValue('D'. $activeRow,$rowData['no_fbs'])
                 ->setCellValue('E'. $activeRow,$rowData['area_per_title'])
                 ->setCellValue('F'. $activeRow,$rowData['area_acqrd'])
