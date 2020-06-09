@@ -119,10 +119,7 @@ class user extends CI_Controller
 
         $this->load->view('header');
         $this->load->view('navbar',$data);
-        if ($this->accessLevel() == -1)
-        {
-            $this->load->view('sidebar');
-        }
+        $this->load->view('sidebar');
         $this->load->view('userlist',$data);
         $this->load->view('footer');
     }

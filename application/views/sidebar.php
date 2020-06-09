@@ -18,6 +18,7 @@
 		<!--- Divider -->
 		<div id="sidebar-menu">
 			<ul>
+                <?php if($access_level == -1 || $access_level == 1){ ?>
                 <li class='has_sub'>
 					<a href="#"><i class='icon-home-3'></i><span>Dashboard</span></a>
                     <ul>
@@ -34,6 +35,7 @@
                         <li><a href="<?php echo base_url('dashboard/area_pending') ?>">Total area - Pending claims</a></li>
                     </ul>
 				</li>
+                <?php } ?>
 				<li>
 					<a href="<?php echo base_url('landregistration') ?>"><i class='icon-pencil'></i><span>Masterlist</span></a>
 
@@ -48,7 +50,7 @@
 					</ul>
 				</li>
 				<?php */ ?>
-<!--				--><?php if($access_level == -1){ ?>
+<!--				--><?php if($access_level == -1 || $access_level == 1){ ?>
 					<li class='has_sub'>
 						<a href='javascript:void(0);'>
 							<i class='icon-book-2'></i><span>Libraries</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span>
